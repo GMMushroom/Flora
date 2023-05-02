@@ -59,24 +59,33 @@ public class P1MovementFlora : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-        if (Player1Layer0.IsTag("Motion"))
-            if (Input.GetAxisRaw("Horizontal") > 0)
+        if (Player1Layer0.IsTag("Standing"))
+        if (Input.GetAxis("Horizontal") > 0)
             {
                 Anim.SetBool("Forward", true);
             }
 
         if (Input.GetAxis("Horizontal") < 0)
         {
-            Anim.SetBool("Forward", true);
+            Anim.SetBool("Backward", true);
         }
         if (Input.GetAxis("Horizontal") == 0)
         {
             Anim.SetBool("Forward", false);
             Anim.SetBool("Backward", false);
         }
+
+        if (Input.GetAxis("Vertical") < 0)
+        {
+            Anim.SetBool("Crouch", true);
+        }
+        if (Input.GetAxis("Vertical") == 0)
+        {
+            Anim.SetBool("Crouch", false);
+        }
     }
 
-    //Ground Check
+    //Ground Check and Crouching
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
@@ -90,6 +99,7 @@ public class P1MovementFlora : MonoBehaviour
             FacingRight = true;
             yield return new WaitForSeconds(0.15f);
             Player1.transform.Rotate(0, 180, 0);
+            Anim.SetLayerWeight(1, 0);
         }
     }
 
@@ -101,6 +111,7 @@ public class P1MovementFlora : MonoBehaviour
             FacingLeft = true;
             yield return new WaitForSeconds(0.15f);
             Player1.transform.Rotate(0, -180, 0);
+            Anim.SetLayerWeight(1, 1);
         }
     }
 }
