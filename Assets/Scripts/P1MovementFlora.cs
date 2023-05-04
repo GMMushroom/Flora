@@ -23,7 +23,7 @@ public class P1MovementFlora : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Anim = GetComponent<Animator>();
+        Anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
