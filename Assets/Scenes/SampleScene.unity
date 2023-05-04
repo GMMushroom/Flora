@@ -156,8 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 229be7da6f5ae442d9179d10115672e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player1: {fileID: 69982205}
-  Player2: {fileID: 1398861031}
+  Player1: {fileID: 127712768}
+  Player2: {fileID: 2118223019}
   rb: {fileID: 69982209}
   groundCheck: {fileID: 574466228}
   groundLayer:
@@ -295,7 +295,6 @@ GameObject:
   - component: {fileID: 127712775}
   - component: {fileID: 127712774}
   - component: {fileID: 127712773}
-  - component: {fileID: 127712772}
   m_Layer: 0
   m_Name: P2 Ray
   m_TagString: Untagged
@@ -303,27 +302,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!50 &127712772
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 127712768}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 8
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!95 &127712773
 Animator:
   serializedVersion: 5
@@ -691,8 +669,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98647d82090ad410190bbadd2add7d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player1: {fileID: 1398861031}
-  Player2: {fileID: 69982205}
+  Player1: {fileID: 2118223019}
+  Player2: {fileID: 127712768}
   rb: {fileID: 1398861037}
   groundCheck: {fileID: 1104185584}
   groundLayer:
@@ -926,7 +904,7 @@ GameObject:
   - component: {fileID: 2118223022}
   - component: {fileID: 2118223021}
   - component: {fileID: 2118223020}
-  - component: {fileID: 2118223024}
+  - component: {fileID: 2118223025}
   m_Layer: 0
   m_Name: P1 Ray
   m_TagString: Untagged
@@ -1022,24 +1000,16 @@ Transform:
   m_Father: {fileID: 1398861032}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &2118223024
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!114 &2118223025
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2118223019}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 8
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfc6afc1409704e0faba0b6069c43872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player1: {fileID: 1398861031}

@@ -55,7 +55,7 @@ public class P1MovementFlora : MonoBehaviour
         }
     }
 
-    //Walking Forwards & Backward
+    //Walking Forwards, Backward and Crouching
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
