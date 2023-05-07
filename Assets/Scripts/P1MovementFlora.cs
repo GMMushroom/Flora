@@ -38,11 +38,11 @@ public class P1MovementFlora : MonoBehaviour
         //Facing Left or Right of the Opponent
         if (P2Position.x > Player1.transform.position.x)
         {
-            StartCoroutine(FaceLeft());
+            StartCoroutine(FaceRight());
         }
         if (P2Position.x < Player1.transform.position.x)
         {
-            StartCoroutine(FaceRight());
+            StartCoroutine(FaceLeft());
         }
 
         //Getting Horizontal Axis & Jumping
@@ -60,19 +60,21 @@ public class P1MovementFlora : MonoBehaviour
     {
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
         if (Player1Layer0.IsTag("Standing"))
-        if (Input.GetAxis("Horizontal") > 0)
+        {
+            if (Input.GetAxis("Horizontal") > 0)
             {
                 Anim.SetBool("Forward", true);
             }
 
-        if (Input.GetAxis("Horizontal") < 0)
-        {
-            Anim.SetBool("Backward", true);
-        }
-        if (Input.GetAxis("Horizontal") == 0)
-        {
-            Anim.SetBool("Forward", false);
-            Anim.SetBool("Backward", false);
+            if (Input.GetAxis("Horizontal") < 0)
+            {
+                Anim.SetBool("Backward", true);
+            }
+            if (Input.GetAxis("Horizontal") == 0)
+            {
+                Anim.SetBool("Forward", false);
+                Anim.SetBool("Backward", false);
+            }
         }
 
         if (Input.GetAxis("Vertical") < 0)
@@ -91,7 +93,7 @@ public class P1MovementFlora : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
-    IEnumerator FaceLeft()
+    IEnumerator FaceRight()
     {
         if (FacingLeft == true)
         {
@@ -103,7 +105,7 @@ public class P1MovementFlora : MonoBehaviour
         }
     }
 
-    IEnumerator FaceRight()
+    IEnumerator FaceLeft()
     {
         if (FacingRight == true)
         {

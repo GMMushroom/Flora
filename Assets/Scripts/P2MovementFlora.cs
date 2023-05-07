@@ -13,8 +13,8 @@ public class P2MovementFlora : MonoBehaviour
     public GameObject Player1;
     public GameObject Player2;
     private Vector2 P2Position;
-    private bool FacingLeftP2 = false;
-    private bool FacingRightP2 = true;
+    private bool FacingLeftP2 = true;
+    private bool FacingRightP2 = false;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -38,11 +38,11 @@ public class P2MovementFlora : MonoBehaviour
         //Facing Left or Right of the Opponent
         if (P2Position.x > Player1.transform.position.x)
         {
-            StartCoroutine(FaceLeft());
+            StartCoroutine(FaceRight());
         }
         if (P2Position.x < Player1.transform.position.x)
         {
-            StartCoroutine(FaceRight());
+            StartCoroutine(FaceLeft());
         }
 
         //Getting Horizontal Axis & Jumping
@@ -59,20 +59,31 @@ public class P2MovementFlora : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-        if (Player1Layer0.IsTag("Motion"))
-            if (Input.GetAxisRaw("Horizontal") > 0)
+        if (Player1Layer0.IsTag("Standing"))
+        {
+            if (Input.GetAxis("HorizontalP2") > 0)
             {
                 Anim.SetBool("Forward", true);
             }
 
-        if (Input.GetAxis("Horizontal") < 0)
-        {
-            Anim.SetBool("Forward", true);
+            if (Input.GetAxis("HorizontalP2") < 0)
+            {
+                Anim.SetBool("Backward", true);
+            }
+            if (Input.GetAxis("HorizontalP2") == 0)
+            {
+                Anim.SetBool("Forward", false);
+                Anim.SetBool("Backward", false);
+            }
         }
-        if (Input.GetAxis("Horizontal") == 0)
+
+        if (Input.GetAxis("VerticalP2") < 0)
         {
-            Anim.SetBool("Forward", false);
-            Anim.SetBool("Backward", false);
+            Anim.SetBool("Crouch", true);
+        }
+        if (Input.GetAxis("VerticalP2") == 0)
+        {
+            Anim.SetBool("Crouch", false);
         }
     }
 
@@ -82,25 +93,25 @@ public class P2MovementFlora : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
-    IEnumerator FaceLeft()
+    IEnumerator FaceRight()
     {
         if (FacingLeftP2 == true)
         {
             FacingLeftP2 = false;
             FacingRightP2 = true;
             yield return new WaitForSeconds(0.15f);
-            Player1.transform.Rotate(0, 180, 0);
+            Player1.transform.Rotate(0, -180, 0);
         }
     }
 
-    IEnumerator FaceRight()
+    IEnumerator FaceLeft()
     {
         if (FacingRightP2 == true)
         {
             FacingRightP2 = false;
             FacingLeftP2 = true;
             yield return new WaitForSeconds(0.15f);
-            Player1.transform.Rotate(0, -180, 0);
+            Player1.transform.Rotate(0, 180, 0);
         }
     }
 }
