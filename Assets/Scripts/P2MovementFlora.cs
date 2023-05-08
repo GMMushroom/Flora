@@ -48,7 +48,8 @@ public class P2MovementFlora : MonoBehaviour
         //Getting Horizontal Axis & Jumping
         horizontal = Input.GetAxisRaw("HorizontalP2");
 
-        if (Input.GetButtonDown("JumpP2") && IsGrounded())
+        if (Player1Layer0.IsTag("Standing"))
+            if (Input.GetButtonDown("JumpP2") && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             Anim.SetTrigger("Jump");
@@ -58,15 +59,15 @@ public class P2MovementFlora : MonoBehaviour
     //Walking Forwards & Backward
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
         if (Player1Layer0.IsTag("Standing"))
         {
-            if (Input.GetAxis("HorizontalP2") > 0)
+            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+            if (Input.GetAxis("HorizontalP2") < 0)
             {
                 Anim.SetBool("Forward", true);
             }
 
-            if (Input.GetAxis("HorizontalP2") < 0)
+            if (Input.GetAxis("HorizontalP2") > 0)
             {
                 Anim.SetBool("Backward", true);
             }

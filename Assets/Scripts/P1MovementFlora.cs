@@ -48,6 +48,7 @@ public class P1MovementFlora : MonoBehaviour
         //Getting Horizontal Axis & Jumping
         horizontal = Input.GetAxisRaw("Horizontal");
 
+        if (Player1Layer0.IsTag("Standing"))
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
@@ -58,9 +59,9 @@ public class P1MovementFlora : MonoBehaviour
     //Walking Forwards, Backward and Crouching
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
         if (Player1Layer0.IsTag("Standing"))
         {
+            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
             if (Input.GetAxis("Horizontal") > 0)
             {
                 Anim.SetBool("Forward", true);
