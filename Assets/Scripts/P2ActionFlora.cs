@@ -42,6 +42,18 @@ public class P2ActionFlora : MonoBehaviour
                 Anim.SetTrigger("C");
                 Hits = false;
             }
+            if (Input.GetButtonDown("BlockP2"))
+            {
+                Anim.SetTrigger("BlockOn");
+            }
+        }
+
+        if (Player1Layer0.IsTag("Blocking"))
+        {
+            if (Input.GetButtonUp("BlockP2"))
+            {
+                Anim.SetTrigger("BlockOff");
+            }
         }
     }
 }

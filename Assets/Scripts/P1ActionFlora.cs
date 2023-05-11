@@ -42,6 +42,18 @@ public class P1ActionFlora : MonoBehaviour
                 Anim.SetTrigger("C");
                 Hits = false;
             }
+            if (Input.GetButtonDown("Block"))
+            {
+                Anim.SetTrigger("BlockOn");
+            }
+        }
+
+        if (Player1Layer0.IsTag("Blocking"))
+        {
+            if (Input.GetButtonUp("Block"))
+            {
+                Anim.SetTrigger("BlockOff");
+            }
         }
     }
 }
