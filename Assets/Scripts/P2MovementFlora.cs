@@ -94,6 +94,15 @@ public class P2MovementFlora : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
+    //Damage Animation
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("MidLight"))
+        {
+            Anim.SetTrigger("LightDamage");
+        }
+    }
+
     IEnumerator FaceRight()
     {
         if (FacingLeftP2 == true)
