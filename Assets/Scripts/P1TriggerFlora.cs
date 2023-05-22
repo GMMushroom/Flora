@@ -7,6 +7,7 @@ public class P1TriggerFlora : MonoBehaviour
     public Collider2D Col;
     private Animator Anim;
     private AnimatorStateInfo Player1Layer0;
+    public float DamageAmt = 0.1f;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +38,7 @@ public class P1TriggerFlora : MonoBehaviour
         if (other.gameObject.CompareTag("Player2"))
         {
             P1ActionFlora.Hits = true;
+            SaveScript.Player2Health -= DamageAmt;
         }
     }
 }
