@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class P1TriggerFlora : MonoBehaviour
+public class P2TriggerFlora : MonoBehaviour
 {
     public Collider2D Col;
     private Animator Anim;
@@ -23,13 +23,13 @@ public class P1TriggerFlora : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player2"))
+        if (other.gameObject.CompareTag("Player1"))
         {
-            SaveScript.Player2Health -= DamageAmt;
+            SaveScript.Player1Health -= DamageAmt;
             Anim.SetTrigger("Connects");
-            if(SaveScript.Player2Timer < 2.0f)
+            if (SaveScript.Player1Timer < 2.0f)
             {
-                SaveScript.Player2Timer += 2.0f;
+                SaveScript.Player1Timer += 2.0f;
             }
         }
     }
