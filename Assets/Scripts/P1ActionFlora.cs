@@ -8,7 +8,6 @@ public class P1ActionFlora : MonoBehaviour
     private Animator Anim;
     private AudioSource RayAudio;
     private AnimatorStateInfo Player1Layer0;
-    public static bool Hits = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,18 +28,15 @@ public class P1ActionFlora : MonoBehaviour
             if (Input.GetButtonDown("Fire1"))
             {
                 Anim.SetTrigger("A");
-                Hits = false;
             }
 
             if (Input.GetButtonDown("Fire2"))
             {
                 Anim.SetTrigger("B");
-                Hits = false;
             }
             if (Input.GetButtonDown("Fire3"))
             {
                 Anim.SetTrigger("C");
-                Hits = false;
             }
             if (Input.GetButtonDown("Block"))
             {

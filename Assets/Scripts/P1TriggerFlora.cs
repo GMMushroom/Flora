@@ -18,27 +18,15 @@ public class P1TriggerFlora : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Listens to Animator
-        Player1Layer0 = Anim.GetCurrentAnimatorStateInfo(0);
 
-        //Enabling Colliders
-        if (P1ActionFlora.Hits == false)
-        {
-            Col.enabled = true;
-            Anim.SetTrigger("Connects");
-        }
-        else
-        {
-            Col.enabled = false;
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player2"))
         {
-            P1ActionFlora.Hits = true;
             SaveScript.Player2Health -= DamageAmt;
+            Anim.SetTrigger("Connects");
         }
     }
 }
