@@ -975,7 +975,7 @@ MonoBehaviour:
   m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 1
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &824774095
@@ -1348,7 +1348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Col: {fileID: 1369594035}
-  DamageAmt: 0.1
+  DamageAmt: 0.08
 --- !u!1 &1398861031
 GameObject:
   m_ObjectHideFlags: 0
@@ -1575,7 +1575,7 @@ MonoBehaviour:
   m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 1
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1576140883
@@ -1846,7 +1846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Col: {fileID: 1825442670}
-  DamageAmt: 0.1
+  DamageAmt: 0.05
 --- !u!1 &1877393608
 GameObject:
   m_ObjectHideFlags: 0
