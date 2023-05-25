@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6fffe1bb71a2d46cbb5dcad5ae68151a
+guid: 5a1855dd3939d4a80a0e132bd24b2141
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ray2 Hit Standing Light_0
+      name: Ray - Damaged & Down Inverted_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3af09ad017da9436da409ffd8751c26d
-      internalID: 1213298319
+      spriteID: a8b39212899d041d8bce346857f7979f
+      internalID: 990915863
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ray2 Hit Standing Light_1
+      name: Ray - Damaged & Down Inverted_1
       rect:
         serializedVersion: 2
         x: 150
@@ -140,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85f402d0c70644fd1883a9434bc3eaaa
-      internalID: 1519860997
+      spriteID: e827f5f217d1e4560a3605189f574de8
+      internalID: -839998970
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ray2 Hit Standing Light_2
+      name: Ray - Damaged & Down Inverted_2
       rect:
         serializedVersion: 2
         x: 300
@@ -161,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a4606e372cef48c0b5d8512a01ef0db
-      internalID: -309187023
+      spriteID: 9b4c04570f1444c8aa30126eb1e4c555
+      internalID: 147149156
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ray2 Hit Standing Light_3
+      name: Ray - Damaged & Down Inverted_3
       rect:
         serializedVersion: 2
         x: 450
@@ -182,8 +182,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39c4ef7e4132e477eae3174b3ede0d98
-      internalID: -54706698
+      spriteID: 400cb477118024de2af86a901f54ac53
+      internalID: 1184336790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ray - Damaged & Down Inverted_4
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d687b99d3bb347a49879513102452e2
+      internalID: -958091197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ray - Damaged & Down Inverted_5
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ef04f32849a547c8801196961bf6f2d
+      internalID: 225331192
       vertices: []
       indices: 
       edges: []
@@ -199,10 +241,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Ray2 Hit Standing Light_0: 1213298319
-      Ray2 Hit Standing Light_1: 1519860997
-      Ray2 Hit Standing Light_2: -309187023
-      Ray2 Hit Standing Light_3: -54706698
+      Ray - Damaged & Down Inverted_0: 990915863
+      Ray - Damaged & Down Inverted_1: -839998970
+      Ray - Damaged & Down Inverted_2: 147149156
+      Ray - Damaged & Down Inverted_3: 1184336790
+      Ray - Damaged & Down Inverted_4: -958091197
+      Ray - Damaged & Down Inverted_5: 225331192
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 1

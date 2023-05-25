@@ -105,14 +105,16 @@ public class P2MovementFlora : MonoBehaviour
         if (Input.GetAxis("VerticalP2") < 0)
         {
             Anim.SetBool("Crouch", true);
+            CapsuleCollider1.enabled = false;
         }
         if (Input.GetAxis("VerticalP2") == 0)
         {
             Anim.SetBool("Crouch", false);
+            CapsuleCollider1.enabled = true;
         }
     }
 
-    //Ground Check and Crouching
+    //Ground Check
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
@@ -121,10 +123,14 @@ public class P2MovementFlora : MonoBehaviour
     //Damage Animation
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("MidLight"))
         if (Player1Layer0.IsTag("Standing"))
+        if (other.gameObject.CompareTag("MidLight"))
         {
             Anim.SetTrigger("LightDamage");
+        }
+        if (other.gameObject.CompareTag("MidHeavy"))
+        {
+            Anim.SetTrigger("HeavyDamage");
         }
     }
 

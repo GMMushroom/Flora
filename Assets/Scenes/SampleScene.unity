@@ -796,7 +796,7 @@ GameObject:
   - component: {fileID: 587754127}
   m_Layer: 7
   m_Name: 5C (1)
-  m_TagString: MidLight
+  m_TagString: MidHeavy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -869,7 +869,7 @@ GameObject:
   - component: {fileID: 694431734}
   m_Layer: 6
   m_Name: 5C
-  m_TagString: MidLight
+  m_TagString: MidHeavy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
