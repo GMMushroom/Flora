@@ -7,6 +7,9 @@ TagManager:
   - MidLight
   - Player1
   - Player2
+  - MidHeavy
+  - Low
+  - High
   layers:
   - Default
   - TransparentFX

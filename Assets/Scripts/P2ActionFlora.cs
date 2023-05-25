@@ -44,7 +44,7 @@ public class P2ActionFlora : MonoBehaviour
             }
             if (Input.GetButtonDown("BlockP2"))
             {
-                Anim.SetTrigger("BlockOn");
+                Anim.SetBool("Blocking", true);
             }
         }
 
@@ -60,7 +60,7 @@ public class P2ActionFlora : MonoBehaviour
         {
             if (Input.GetButtonUp("BlockP2"))
             {
-                Anim.SetTrigger("BlockOff");
+                Anim.SetBool("Blocking", false);
             }
         }
     }

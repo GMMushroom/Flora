@@ -15,6 +15,8 @@ public class P2MovementFlora : MonoBehaviour
     private Vector2 P2Position;
     private bool FacingLeftP2 = true;
     private bool FacingRightP2 = false;
+    public Collider2D CapsuleCollider1;
+    public Collider2D CapsuleCollider2;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -57,14 +59,28 @@ public class P2MovementFlora : MonoBehaviour
         horizontal = Input.GetAxisRaw("HorizontalP2");
 
         if (Player1Layer0.IsTag("Standing"))
-            if (Input.GetButtonDown("JumpP2") && IsGrounded())
+        if (Input.GetButtonDown("JumpP2") && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             Anim.SetTrigger("Jump");
         }
+
+        //No Damage when Blocking
+        if (Player1Layer0.IsTag("Blocking"))
+        {
+            rb.isKinematic = true;
+            CapsuleCollider1.enabled = false;
+            CapsuleCollider2.enabled = false;
+        }
+        else
+        {
+            CapsuleCollider1.enabled = true;
+            CapsuleCollider2.enabled = true;
+            rb.isKinematic = false;
+        }
     }
 
-    //Walking Forwards & Backward
+    //Walking Forwards, Backward and Crouching
     private void FixedUpdate()
     {
         if (Player1Layer0.IsTag("Standing"))
@@ -96,7 +112,7 @@ public class P2MovementFlora : MonoBehaviour
         }
     }
 
-    //Ground Check
+    //Ground Check and Crouching
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
@@ -106,6 +122,7 @@ public class P2MovementFlora : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("MidLight"))
+        if (Player1Layer0.IsTag("Standing"))
         {
             Anim.SetTrigger("LightDamage");
         }
@@ -119,6 +136,7 @@ public class P2MovementFlora : MonoBehaviour
             FacingRightP2 = true;
             yield return new WaitForSeconds(0.15f);
             Player1.transform.Rotate(0, -180, 0);
+            Anim.SetLayerWeight(1, 0);
         }
     }
 
@@ -130,6 +148,7 @@ public class P2MovementFlora : MonoBehaviour
             FacingLeftP2 = true;
             yield return new WaitForSeconds(0.15f);
             Player1.transform.Rotate(0, 180, 0);
+            Anim.SetLayerWeight(1, 1);
         }
     }
 

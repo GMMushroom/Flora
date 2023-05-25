@@ -15,6 +15,8 @@ public class P1MovementFlora : MonoBehaviour
     private Vector2 P2Position;
     private bool FacingLeft = false;
     private bool FacingRight = true;
+    public Collider2D CapsuleCollider1;
+    public Collider2D CapsuleCollider2;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -30,7 +32,7 @@ public class P1MovementFlora : MonoBehaviour
     void Update()
     {
         //Check if K.O'd
-        if (SaveScript.Player2Health <= 0)
+        if(SaveScript.Player1Health <= 0)
         {
             Anim.SetTrigger("KO");
             Player1.GetComponent<P1ActionFlora>().enabled = false;
@@ -61,6 +63,20 @@ public class P1MovementFlora : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             Anim.SetTrigger("Jump");
+        }
+
+        //No Damage when Blocking
+        if (Player1Layer0.IsTag("Blocking"))
+        {
+            rb.isKinematic = true;
+            CapsuleCollider1.enabled = false;
+            CapsuleCollider2.enabled = false;
+        }
+        else
+        {
+            CapsuleCollider1.enabled = true;
+            CapsuleCollider2.enabled = true;
+            rb.isKinematic = false;
         }
     }
 
@@ -106,6 +122,7 @@ public class P1MovementFlora : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("MidLight"))
+        if (Player1Layer0.IsTag("Standing"))
         {
             Anim.SetTrigger("LightDamage");
         }

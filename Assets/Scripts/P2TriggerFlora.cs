@@ -26,11 +26,18 @@ public class P2TriggerFlora : MonoBehaviour
         if (other.gameObject.CompareTag("Player1"))
         {
             SaveScript.Player1Health -= DamageAmt;
-            Anim.SetTrigger("Connects");
+            Anim.SetBool("Hits", true);
             if (SaveScript.Player1Timer < 1.0f)
             {
                 SaveScript.Player1Timer += 1.0f;
             }
+            StartCoroutine(CancelWindow());
         }
+    }
+
+    IEnumerator CancelWindow()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Anim.SetBool("Hits", false);
     }
 }
