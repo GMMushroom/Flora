@@ -24,11 +24,11 @@ public class HealthBarScript : MonoBehaviour
 
         if(SaveScript.Player2Timer > 0)
         {
-            SaveScript.Player2Timer -= 2.0f * Time.deltaTime;
+            SaveScript.Player2Timer -= 1.0f * Time.deltaTime;
         }
         if (SaveScript.Player1Timer > 0)
         {
-            SaveScript.Player1Timer -= 2.0f * Time.deltaTime;
+            SaveScript.Player1Timer -= 1.0f * Time.deltaTime;
         }
 
         if (SaveScript.Player2Timer <= 0)
@@ -42,7 +42,7 @@ public class HealthBarScript : MonoBehaviour
         {
             if (Player1Red.fillAmount > SaveScript.Player1Health)
             {
-                Player1Red.fillAmount -= 0.03f;
+                Player1Red.fillAmount -= 0.003f;
             }
         }
     }

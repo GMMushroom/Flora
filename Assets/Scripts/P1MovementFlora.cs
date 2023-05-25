@@ -29,6 +29,14 @@ public class P1MovementFlora : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Check if K.O'd
+        if (SaveScript.Player2Health <= 0)
+        {
+            Anim.SetTrigger("KO");
+            Player1.GetComponent<P1ActionFlora>().enabled = false;
+            StartCoroutine(KO());
+        }
+
         //Listens to Animator
         Player1Layer0 = Anim.GetCurrentAnimatorStateInfo(0);
 
@@ -125,5 +133,11 @@ public class P1MovementFlora : MonoBehaviour
             Player1.transform.Rotate(0, -180, 0);
             Anim.SetLayerWeight(1, 1);
         }
+    }
+
+    IEnumerator KO()
+    {
+        yield return new WaitForSeconds(0.1f);
+        this.GetComponent<P1MovementFlora>().enabled = false;
     }
 }

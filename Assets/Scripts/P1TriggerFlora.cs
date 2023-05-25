@@ -27,9 +27,9 @@ public class P1TriggerFlora : MonoBehaviour
         {
             SaveScript.Player2Health -= DamageAmt;
             Anim.SetTrigger("Connects");
-            if(SaveScript.Player2Timer < 2.0f)
+            if (SaveScript.Player2Timer < 1.0f)
             {
-                SaveScript.Player2Timer += 2.0f;
+                SaveScript.Player2Timer += 1.0f;
             }
         }
     }

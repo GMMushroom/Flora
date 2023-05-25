@@ -44,6 +44,14 @@ public class P1ActionFlora : MonoBehaviour
             }
         }
 
+        if(Player1Layer0.IsTag("Crouching"))
+        {
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Anim.SetTrigger("A");
+            }
+        }
+
         if (Player1Layer0.IsTag("Blocking"))
         {
             if (Input.GetButtonUp("Block"))

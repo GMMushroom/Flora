@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RayP1 - 2A
+  m_Name: RayP2 - 2A
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -51,21 +51,21 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: 2A
+    path: 2A (1)
     classID: 61
     script: {fileID: 0}
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 182844920, guid: ca595d538341b4927a25ec8f0db68696, type: 3}
+      value: {fileID: -1685511313, guid: da274a122d32e416e89a2df2850d4d48, type: 3}
     - time: 0.083333336
-      value: {fileID: -1472275492, guid: ca595d538341b4927a25ec8f0db68696, type: 3}
+      value: {fileID: -633620387, guid: da274a122d32e416e89a2df2850d4d48, type: 3}
     - time: 0.2
-      value: {fileID: 547023801, guid: ca595d538341b4927a25ec8f0db68696, type: 3}
+      value: {fileID: 108093729, guid: da274a122d32e416e89a2df2850d4d48, type: 3}
     - time: 0.25
-      value: {fileID: 655725023, guid: ca595d538341b4927a25ec8f0db68696, type: 3}
+      value: {fileID: -283167749, guid: da274a122d32e416e89a2df2850d4d48, type: 3}
     - time: 0.3
-      value: {fileID: 761716092, guid: ca595d538341b4927a25ec8f0db68696, type: 3}
+      value: {fileID: -1149562457, guid: da274a122d32e416e89a2df2850d4d48, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -78,7 +78,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2909943688
+      path: 2405454148
       attribute: 3305885265
       script: {fileID: 0}
       typeID: 61
@@ -92,11 +92,11 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 182844920, guid: ca595d538341b4927a25ec8f0db68696, type: 3}
-    - {fileID: -1472275492, guid: ca595d538341b4927a25ec8f0db68696, type: 3}
-    - {fileID: 547023801, guid: ca595d538341b4927a25ec8f0db68696, type: 3}
-    - {fileID: 655725023, guid: ca595d538341b4927a25ec8f0db68696, type: 3}
-    - {fileID: 761716092, guid: ca595d538341b4927a25ec8f0db68696, type: 3}
+    - {fileID: -1685511313, guid: da274a122d32e416e89a2df2850d4d48, type: 3}
+    - {fileID: -633620387, guid: da274a122d32e416e89a2df2850d4d48, type: 3}
+    - {fileID: 108093729, guid: da274a122d32e416e89a2df2850d4d48, type: 3}
+    - {fileID: -283167749, guid: da274a122d32e416e89a2df2850d4d48, type: 3}
+    - {fileID: -1149562457, guid: da274a122d32e416e89a2df2850d4d48, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -152,7 +152,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: 2A
+    path: 2A (1)
     classID: 61
     script: {fileID: 0}
   m_EulerEditorCurves: []
