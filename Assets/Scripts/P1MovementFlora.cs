@@ -38,6 +38,13 @@ public class P1MovementFlora : MonoBehaviour
             Player1.GetComponent<P1ActionFlora>().enabled = false;
             StartCoroutine(KO());
         }
+        if (SaveScript.Player2Health <= 0)
+        {
+            Anim.SetTrigger("Win");
+            Player1.GetComponent<P1ActionFlora>().enabled = false;
+            this.GetComponent<P1MovementFlora>().enabled = false;
+        }
+
 
         //Listens to Animator
         Player1Layer0 = Anim.GetCurrentAnimatorStateInfo(0);
@@ -124,13 +131,15 @@ public class P1MovementFlora : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (Player1Layer0.IsTag("Standing"))
-        if (other.gameObject.CompareTag("MidLight"))
         {
-            Anim.SetTrigger("LightDamage");
-        }
-        if (other.gameObject.CompareTag("MidHeavy"))
-        {
-            Anim.SetTrigger("HeavyDamage");
+            if (other.gameObject.CompareTag("MidLight"))
+            {
+                Anim.SetTrigger("LightDamage");
+            }
+            if (other.gameObject.CompareTag("MidHeavy"))
+            {
+                Anim.SetTrigger("HeavyDamage");
+            }
         }
     }
 

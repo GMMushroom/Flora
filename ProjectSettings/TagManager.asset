@@ -10,6 +10,7 @@ TagManager:
   - MidHeavy
   - Low
   - High
+  - Blocking
   layers:
   - Default
   - TransparentFX
