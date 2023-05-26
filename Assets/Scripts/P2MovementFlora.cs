@@ -31,7 +31,7 @@ public class P2MovementFlora : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Check if K.O'd
+        //Check if K.O'd or if Won
         if(SaveScript.Player2Health <= 0)
         {
             Anim.SetTrigger("KO");

@@ -31,7 +31,7 @@ public class P1MovementFlora : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Check if K.O'd
+        //Check if K.O'd or if Won
         if(SaveScript.Player1Health <= 0)
         {
             Anim.SetTrigger("KO");
@@ -44,7 +44,6 @@ public class P1MovementFlora : MonoBehaviour
             Player1.GetComponent<P1ActionFlora>().enabled = false;
             this.GetComponent<P1MovementFlora>().enabled = false;
         }
-
 
         //Listens to Animator
         Player1Layer0 = Anim.GetCurrentAnimatorStateInfo(0);

@@ -50,6 +50,10 @@ public class P1ActionFlora : MonoBehaviour
             {
                 Anim.SetTrigger("A");
             }
+            if (Input.GetButtonDown("Block"))
+            {
+                Anim.SetBool("Blocking", true);
+            }
         }
 
         if (Player1Layer0.IsTag("Blocking"))
