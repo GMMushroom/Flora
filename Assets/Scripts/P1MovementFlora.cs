@@ -71,7 +71,7 @@ public class P1MovementFlora : MonoBehaviour
                 Anim.SetTrigger("Jump");
             }
 
-        //No Damage when Blocking
+        //Disable RigidBody2D and Collider2D when Blocking <-- Finnicky right now.
         if (Player1Layer0.IsTag("Blocking"))
         {
             rb.isKinematic = true;
@@ -86,7 +86,7 @@ public class P1MovementFlora : MonoBehaviour
         }
     }
 
-    //Walking Forwards, Backward and Crouching
+    //Walking Forwards, Backward and Crouching Animations
     private void FixedUpdate()
     {
         if (Player1Layer0.IsTag("Standing"))
@@ -126,7 +126,7 @@ public class P1MovementFlora : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
-    //Damage Animation
+    //Damage Animation plays when Collider2D Trigger enters
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (Player1Layer0.IsTag("Standing"))

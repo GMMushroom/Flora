@@ -24,6 +24,7 @@ public class P2ActionFlora : MonoBehaviour
         Player1Layer0 = Anim.GetCurrentAnimatorStateInfo(0);
 
         //Animation for Attacks
+        //Standing Attacks & Standing Block
         if (Player1Layer0.IsTag("Standing"))
         {
             if (Input.GetButtonDown("Fire1P2"))
@@ -48,9 +49,10 @@ public class P2ActionFlora : MonoBehaviour
             }
         }
 
+        //Crouching Attacks & Crouching Block
         if (Player1Layer0.IsTag("Crouching"))
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1P2"))
             {
                 Anim.SetTrigger("A");
             }
@@ -60,6 +62,7 @@ public class P2ActionFlora : MonoBehaviour
             }
         }
 
+        //Going out of Blocking
         if (Player1Layer0.IsTag("Blocking"))
         {
             if (Input.GetButtonUp("BlockP2"))

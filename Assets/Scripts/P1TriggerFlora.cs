@@ -23,6 +23,7 @@ public class P1TriggerFlora : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        //Calculates Damage
         if (other.gameObject.CompareTag("Player2"))
         {
             SaveScript.Player2Health -= DamageAmt;
