@@ -13,8 +13,8 @@ public class P2MovementFlora : MonoBehaviour
     public GameObject Player1;
     public GameObject Player2;
     private Vector2 P2Position;
-    private bool FacingLeftP2 = true;
-    private bool FacingRightP2 = false;
+    private bool FacingLeft = false;
+    private bool FacingRight = true;
     public Collider2D CapsuleCollider1;
     public Collider2D CapsuleCollider2;
 
@@ -32,7 +32,7 @@ public class P2MovementFlora : MonoBehaviour
     void Update()
     {
         //Check if K.O'd or if Won
-        if(SaveScript.Player2Health <= 0)
+        if (SaveScript.Player2Health <= 0)
         {
             Anim.SetTrigger("KO");
             Player1.GetComponent<P2ActionFlora>().enabled = false;
@@ -65,11 +65,11 @@ public class P2MovementFlora : MonoBehaviour
         horizontal = Input.GetAxisRaw("HorizontalP2");
 
         if (Player1Layer0.IsTag("Standing"))
-        if (Input.GetButtonDown("JumpP2") && IsGrounded())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-            Anim.SetTrigger("Jump");
-        }
+            if (Input.GetButtonDown("JumpP2") && IsGrounded())
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+                Anim.SetTrigger("Jump");
+            }
 
         //No Damage when Blocking
         if (Player1Layer0.IsTag("Blocking"))
@@ -92,12 +92,12 @@ public class P2MovementFlora : MonoBehaviour
         if (Player1Layer0.IsTag("Standing"))
         {
             rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-            if (Input.GetAxis("HorizontalP2") < 0)
+            if (Input.GetAxis("HorizontalP2") > 0)
             {
                 Anim.SetBool("Forward", true);
             }
 
-            if (Input.GetAxis("HorizontalP2") > 0)
+            if (Input.GetAxis("HorizontalP2") < 0)
             {
                 Anim.SetBool("Backward", true);
             }
@@ -144,24 +144,24 @@ public class P2MovementFlora : MonoBehaviour
 
     IEnumerator FaceRight()
     {
-        if (FacingLeftP2 == true)
+        if (FacingLeft == true)
         {
-            FacingLeftP2 = false;
-            FacingRightP2 = true;
+            FacingLeft = false;
+            FacingRight = true;
             yield return new WaitForSeconds(0.15f);
-            Player1.transform.Rotate(0, -180, 0);
+            Player1.transform.Rotate(0, 180, 0);
             Anim.SetLayerWeight(1, 0);
         }
     }
 
     IEnumerator FaceLeft()
     {
-        if (FacingRightP2 == true)
+        if (FacingRight == true)
         {
-            FacingRightP2 = false;
-            FacingLeftP2 = true;
+            FacingRight = false;
+            FacingLeft = true;
             yield return new WaitForSeconds(0.15f);
-            Player1.transform.Rotate(0, 180, 0);
+            Player1.transform.Rotate(0, -180, 0);
             Anim.SetLayerWeight(1, 1);
         }
     }

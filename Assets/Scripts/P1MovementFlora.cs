@@ -32,7 +32,7 @@ public class P1MovementFlora : MonoBehaviour
     void Update()
     {
         //Check if K.O'd or if Won
-        if(SaveScript.Player1Health <= 0)
+        if (SaveScript.Player1Health <= 0)
         {
             Anim.SetTrigger("KO");
             Player1.GetComponent<P1ActionFlora>().enabled = false;
@@ -65,11 +65,11 @@ public class P1MovementFlora : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
 
         if (Player1Layer0.IsTag("Standing"))
-        if (Input.GetButtonDown("Jump") && IsGrounded())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-            Anim.SetTrigger("Jump");
-        }
+            if (Input.GetButtonDown("Jump") && IsGrounded())
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+                Anim.SetTrigger("Jump");
+            }
 
         //No Damage when Blocking
         if (Player1Layer0.IsTag("Blocking"))

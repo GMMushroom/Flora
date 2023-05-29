@@ -90,7 +90,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: space
+    positiveButton: w
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -169,7 +169,7 @@ InputManager:
     m_Name: VerticalP2
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: up
+    negativeButton: 
     positiveButton: down
     altNegativeButton: 
     altPositiveButton: 
@@ -186,7 +186,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: m
+    positiveButton: ','
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -202,7 +202,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: ','
+    positiveButton: .
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -218,7 +218,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: .
+    positiveButton: /
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -234,7 +234,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: /
+    positiveButton: up
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -506,7 +506,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: ''''
+    positiveButton: m
     altNegativeButton: 
     altPositiveButton: 
     gravity: 3
