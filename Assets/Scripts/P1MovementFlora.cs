@@ -22,6 +22,10 @@ public class P1MovementFlora : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
+    public float KnockBackForceLight = 2.0f;
+    public float KnockBackForceUp = 2.0f;
+    public float KnockBackForceHeavy = 5.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -127,18 +131,22 @@ public class P1MovementFlora : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
-    //Damage Animation plays when Collider2D Trigger enters
+    //Damage Animation plays when Collider2D Trigger enters & Knockback
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (Player1Layer0.IsTag("Standing"))
         {
             if (other.gameObject.CompareTag("MidLight"))
             {
-                Anim.SetTrigger("LightDamage");
+                Anim.SetTrigger("LightDamageStanding");
+                Vector2 KnockBackDirection = new Vector2(transform.position.x - Player2.transform.position.x, 0);
+                rb.velocity = new Vector2(KnockBackDirection.x, KnockBackForceUp) * KnockBackForceLight;
             }
             if (other.gameObject.CompareTag("MidHeavy"))
             {
-                Anim.SetTrigger("HeavyDamage");
+                Anim.SetTrigger("HeavyDamageStanding");
+                Vector2 KnockBackDirection = new Vector2(transform.position.x - Player2.transform.position.x, 0);
+                rb.velocity = new Vector2(KnockBackDirection.x, KnockBackForceUp) * KnockBackForceHeavy;
             }
         }
 
@@ -146,11 +154,31 @@ public class P1MovementFlora : MonoBehaviour
         {
             if (other.gameObject.CompareTag("MidLight"))
             {
-                Anim.SetTrigger("LightDamage");
+                Anim.SetTrigger("LightDamageJumping");
+                Vector2 KnockBackDirection = new Vector2(transform.position.x - Player2.transform.position.x, 0);
+                rb.velocity = new Vector2(KnockBackDirection.x, KnockBackForceUp) * KnockBackForceLight;
             }
             if (other.gameObject.CompareTag("MidHeavy"))
             {
-                Anim.SetTrigger("HeavyDamage");
+                Anim.SetTrigger("HeavyDamageJumping");
+                Vector2 KnockBackDirection = new Vector2(transform.position.x - Player2.transform.position.x, 0);
+                rb.velocity = new Vector2(KnockBackDirection.x, KnockBackForceUp) * KnockBackForceHeavy;
+            }
+        }
+
+        if (Player1Layer0.IsTag("Crouching"))
+        {
+            if (other.gameObject.CompareTag("MidLight"))
+            {
+                Anim.SetTrigger("LightDamageCrouching");
+                Vector2 KnockBackDirection = new Vector2(transform.position.x - Player2.transform.position.x, 0);
+                rb.velocity = new Vector2(KnockBackDirection.x, KnockBackForceUp) * KnockBackForceLight;
+            }
+            if (other.gameObject.CompareTag("MidHeavy"))
+            {
+                Anim.SetTrigger("HeavyDamageCrouching");
+                Vector2 KnockBackDirection = new Vector2(transform.position.x - Player2.transform.position.x, 0);
+                rb.velocity = new Vector2(KnockBackDirection.x, KnockBackForceUp) * KnockBackForceHeavy;
             }
         }
     }
