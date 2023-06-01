@@ -37,6 +37,3 @@ Flora is my multimedia majorwork project. It's a 2D Fighter akin to Street Fight
         }
 
 The code works, just not as intended. Instead of disabling the colliders, the colliders instead flicker on and off, but that doesn't show in unity. So for almost every frame an attack is active, the game registers each frame as an individual attack and thus deal more damage than if the player had just stood still. This problem seems to only affect blocking while standing. If the player is blocking while crouching, the code works as intended. So it might not be a problem with the code, but with the 'Standing Block' animation?
-
-Minor Issue:
-One minor animation is if the player character is facing left (so they're on the right side of the screen) they don't play the damage animation when they're attacked, even though the animator shows they're transitioning. It works normally when the player is facing right (on the left side of the screen) though so... ¯\_(ツ)_/¯
