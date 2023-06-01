@@ -25,6 +25,7 @@ public class P1MovementFlora : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Player2 = GameObject.Find("P2");
         Anim = GetComponentInChildren<Animator>();
     }
 
@@ -65,11 +66,11 @@ public class P1MovementFlora : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
 
         if (Player1Layer0.IsTag("Standing"))
-            if (Input.GetButtonDown("Jump") && IsGrounded())
-            {
-                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-                Anim.SetTrigger("Jump");
-            }
+        if (Input.GetButtonDown("Jump") && IsGrounded())
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            Anim.SetTrigger("Jump");
+        }
 
         //Disable RigidBody2D and Collider2D when Blocking <-- Finnicky right now.
         if (Player1Layer0.IsTag("Blocking"))
@@ -130,6 +131,18 @@ public class P1MovementFlora : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (Player1Layer0.IsTag("Standing"))
+        {
+            if (other.gameObject.CompareTag("MidLight"))
+            {
+                Anim.SetTrigger("LightDamage");
+            }
+            if (other.gameObject.CompareTag("MidHeavy"))
+            {
+                Anim.SetTrigger("HeavyDamage");
+            }
+        }
+
+        if (Player1Layer0.IsTag("Jumping"))
         {
             if (other.gameObject.CompareTag("MidLight"))
             {

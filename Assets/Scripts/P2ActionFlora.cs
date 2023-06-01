@@ -62,6 +62,15 @@ public class P2ActionFlora : MonoBehaviour
             }
         }
 
+        //Jumping Attacks & Jumping Block
+        if (Player1Layer0.IsTag("Jumping"))
+        {
+            if (Input.GetButtonDown("Block"))
+            {
+                Anim.SetBool("Blocking", true);
+            }
+        }
+
         //Going out of Blocking
         if (Player1Layer0.IsTag("Blocking"))
         {

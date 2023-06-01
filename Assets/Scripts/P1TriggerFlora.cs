@@ -8,11 +8,17 @@ public class P1TriggerFlora : MonoBehaviour
     private Animator Anim;
     private AnimatorStateInfo Player1Layer0;
     public float DamageAmt = 0.1f;
+    public bool EmitFX = false;
+    public ParticleSystem Particles;
+    public string ParticleType = "P2HeadHit";
+    private GameObject ChosenParticles;
 
     // Start is called before the first frame update
     void Start()
     {
         Anim = GetComponentInParent<Animator>();
+        ChosenParticles = GameObject.Find(ParticleType);
+        Particles = ChosenParticles.gameObject.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -26,6 +32,10 @@ public class P1TriggerFlora : MonoBehaviour
         //Calculates Damage
         if (other.gameObject.CompareTag("Player2"))
         {
+            if (EmitFX == true)
+            {
+                Particles.Play();
+            }
             SaveScript.Player2Health -= DamageAmt;
             Anim.SetBool("Hits", true);
             if (SaveScript.Player2Timer < 1.0f)

@@ -25,6 +25,7 @@ public class P2MovementFlora : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Player2 = GameObject.Find("P1");
         Anim = GetComponentInChildren<Animator>();
     }
 
@@ -65,11 +66,11 @@ public class P2MovementFlora : MonoBehaviour
         horizontal = Input.GetAxisRaw("HorizontalP2");
 
         if (Player1Layer0.IsTag("Standing"))
-            if (Input.GetButtonDown("JumpP2") && IsGrounded())
-            {
-                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-                Anim.SetTrigger("Jump");
-            }
+        if (Input.GetButtonDown("JumpP2") && IsGrounded())
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            Anim.SetTrigger("Jump");
+        }
 
         //Disable RigidBody2D and Collider2D when Blocking
         if (Player1Layer0.IsTag("Blocking"))
