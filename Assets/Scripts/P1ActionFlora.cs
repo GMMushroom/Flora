@@ -6,14 +6,17 @@ public class P1ActionFlora : MonoBehaviour
 {
     public GameObject Player1;
     private Animator Anim;
-    private AudioSource RayAudio;
+    private AudioSource MyPlayer;
     private AnimatorStateInfo Player1Layer0;
+    public AudioClip Punch;
+    public AudioClip Kick;
+    public AudioClip Slash;
 
     // Start is called before the first frame update
     void Start()
     {
         Anim = GetComponent<Animator>();
-        RayAudio = GetComponent<AudioSource>();
+        MyPlayer = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -75,5 +78,23 @@ public class P1ActionFlora : MonoBehaviour
                 Anim.SetBool("Blocking", false);
             }
         }
+    }
+
+    public void PunchSound()
+    {
+        MyPlayer.clip = Punch;
+        MyPlayer.Play();
+    }
+
+    public void KickSound()
+    {
+        MyPlayer.clip = Kick;
+        MyPlayer.Play();
+    }
+
+    public void SlashSound()
+    {
+        MyPlayer.clip = Slash;
+        MyPlayer.Play();
     }
 }

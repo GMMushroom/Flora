@@ -993,6 +993,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1906852611199114712, guid: ad1fefaa89839432f9f9e76f290c1cbb, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1906852611922720128, guid: ad1fefaa89839432f9f9e76f290c1cbb, type: 3}
+      propertyPath: KnockBackForceHeavy
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1906852611922720130, guid: ad1fefaa89839432f9f9e76f290c1cbb, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1050,6 +1058,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 786876369508617048, guid: 924a1e3f5ea334e988bbe6cd77030deb, type: 3}
+      propertyPath: m_Name
+      value: Crouching Block
+      objectReference: {fileID: 0}
+    - target: {fileID: 9208479723152722547, guid: 924a1e3f5ea334e988bbe6cd77030deb, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9208479723997536304, guid: 924a1e3f5ea334e988bbe6cd77030deb, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1097,6 +1113,10 @@ PrefabInstance:
     - target: {fileID: 9208479723997536310, guid: 924a1e3f5ea334e988bbe6cd77030deb, type: 3}
       propertyPath: m_Name
       value: P2 Ray
+      objectReference: {fileID: 0}
+    - target: {fileID: 9208479723997536311, guid: 924a1e3f5ea334e988bbe6cd77030deb, type: 3}
+      propertyPath: KnockBackForceHeavy
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 924a1e3f5ea334e988bbe6cd77030deb, type: 3}

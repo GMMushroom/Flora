@@ -6,15 +6,17 @@ public class P2ActionFlora : MonoBehaviour
 {
     public GameObject Player2;
     private Animator Anim;
-    private AudioSource RayAudio;
+    private AudioSource MyPlayer;
     private AnimatorStateInfo Player1Layer0;
-    public static bool Hits = false;
+    public AudioClip Punch;
+    public AudioClip Kick;
+    public AudioClip Slash;
 
     // Start is called before the first frame update
     void Start()
     {
         Anim = GetComponent<Animator>();
-        RayAudio = GetComponent<AudioSource>();
+        MyPlayer = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -30,18 +32,15 @@ public class P2ActionFlora : MonoBehaviour
             if (Input.GetButtonDown("Fire1P2"))
             {
                 Anim.SetTrigger("A");
-                Hits = false;
             }
 
             if (Input.GetButtonDown("Fire2P2"))
             {
                 Anim.SetTrigger("B");
-                Hits = false;
             }
             if (Input.GetButtonDown("Fire3P2"))
             {
                 Anim.SetTrigger("C");
-                Hits = false;
             }
             if (Input.GetButtonDown("BlockP2"))
             {
@@ -79,5 +78,23 @@ public class P2ActionFlora : MonoBehaviour
                 Anim.SetBool("Blocking", false);
             }
         }
+    }
+
+    public void PunchSound()
+    {
+        MyPlayer.clip = Punch;
+        MyPlayer.Play();
+    }
+
+    public void KickSound()
+    {
+        MyPlayer.clip = Kick;
+        MyPlayer.Play();
+    }
+
+    public void SlashSound()
+    {
+        MyPlayer.clip = Slash;
+        MyPlayer.Play();
     }
 }

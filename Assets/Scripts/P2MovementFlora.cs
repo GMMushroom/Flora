@@ -15,6 +15,9 @@ public class P2MovementFlora : MonoBehaviour
     private Vector2 P2Position;
     private bool FacingLeft = false;
     private bool FacingRight = true;
+    private AudioSource MyPlayer;
+    public AudioClip LightHit;
+    public AudioClip HeavyHit;
     public Collider2D CapsuleCollider1;
     public Collider2D CapsuleCollider2;
 
@@ -24,13 +27,14 @@ public class P2MovementFlora : MonoBehaviour
 
     public float KnockBackForceLight = 2.0f;
     public float KnockBackForceUp = 2.0f;
-    public float KnockBackForceHeavy = 5.0f;
+    public float KnockBackForceHeavy = 3.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         Player2 = GameObject.Find("P1");
         Anim = GetComponentInChildren<Animator>();
+        MyPlayer = GetComponentInChildren<AudioSource>();
     }
 
     // Update is called once per frame
@@ -139,14 +143,14 @@ public class P2MovementFlora : MonoBehaviour
             if (other.gameObject.CompareTag("MidLight"))
             {
                 Anim.SetTrigger("LightDamageStanding");
-                Vector2 KnockBackDirection = new Vector2(transform.position.x - Player2.transform.position.x, 0);
-                rb.velocity = new Vector2(KnockBackDirection.x, KnockBackForceUp) * KnockBackForceLight;
+                Knockback();
+                LightHitSound();
             }
             if (other.gameObject.CompareTag("MidHeavy"))
             {
                 Anim.SetTrigger("HeavyDamageStanding");
-                Vector2 KnockBackDirection = new Vector2(transform.position.x - Player2.transform.position.x, 0);
-                rb.velocity = new Vector2(KnockBackDirection.x, KnockBackForceUp) * KnockBackForceHeavy;
+                Knockback();
+                HeavyHitSound();
             }
         }
 
@@ -155,14 +159,14 @@ public class P2MovementFlora : MonoBehaviour
             if (other.gameObject.CompareTag("MidLight"))
             {
                 Anim.SetTrigger("LightDamageJumping");
-                Vector2 KnockBackDirection = new Vector2(transform.position.x - Player2.transform.position.x, 0);
-                rb.velocity = new Vector2(KnockBackDirection.x, KnockBackForceUp) * KnockBackForceLight;
+                Knockback();
+                LightHitSound();
             }
             if (other.gameObject.CompareTag("MidHeavy"))
             {
                 Anim.SetTrigger("HeavyDamageJumping");
-                Vector2 KnockBackDirection = new Vector2(transform.position.x - Player2.transform.position.x, 0);
-                rb.velocity = new Vector2(KnockBackDirection.x, KnockBackForceUp) * KnockBackForceHeavy;
+                Knockback();
+                HeavyHitSound();
             }
         }
 
@@ -171,16 +175,34 @@ public class P2MovementFlora : MonoBehaviour
             if (other.gameObject.CompareTag("MidLight"))
             {
                 Anim.SetTrigger("LightDamageCrouching");
-                Vector2 KnockBackDirection = new Vector2(transform.position.x - Player2.transform.position.x, 0);
-                rb.velocity = new Vector2(KnockBackDirection.x, KnockBackForceUp) * KnockBackForceLight;
+                Knockback();
+                LightHitSound();
             }
             if (other.gameObject.CompareTag("MidHeavy"))
             {
                 Anim.SetTrigger("HeavyDamageCrouching");
-                Vector2 KnockBackDirection = new Vector2(transform.position.x - Player2.transform.position.x, 0);
-                rb.velocity = new Vector2(KnockBackDirection.x, KnockBackForceUp) * KnockBackForceHeavy;
+                Knockback();
+                HeavyHitSound();
             }
         }
+    }
+
+    private void Knockback()
+    {
+        Vector2 KnockBackDirection = new Vector2(transform.position.x - Player2.transform.position.x, 0);
+        rb.velocity = new Vector2(KnockBackDirection.x, KnockBackForceUp) * KnockBackForceHeavy;
+    }
+
+    public void LightHitSound()
+    {
+        MyPlayer.clip = LightHit;
+        MyPlayer.Play();
+    }
+
+    public void HeavyHitSound()
+    {
+        MyPlayer.clip = HeavyHit;
+        MyPlayer.Play();
     }
 
     IEnumerator FaceRight()
