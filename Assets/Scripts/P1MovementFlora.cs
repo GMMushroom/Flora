@@ -25,9 +25,9 @@ public class P1MovementFlora : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
-    public float KnockBackForceLight = 2.0f;
-    public float KnockBackForceUp = 2.0f;
-    public float KnockBackForceHeavy = 3.0f;
+    public float KnockBackForceLight = 1.0f;
+    public float KnockBackForceUp = 1.0f;
+    public float KnockBackForceHeavy = 2.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -138,7 +138,7 @@ public class P1MovementFlora : MonoBehaviour
     //Damage Animation plays when Collider2D Trigger enters & Knockback
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (Player1Layer0.IsTag("Standing"))
+        if ((Player1Layer0.IsTag("Standing")) || (Player1Layer0.IsTag("StandingAttack")))
         {
             if (other.gameObject.CompareTag("MidLight"))
             {
@@ -154,7 +154,7 @@ public class P1MovementFlora : MonoBehaviour
             }
         }
 
-        if (Player1Layer0.IsTag("Jumping"))
+        if ((Player1Layer0.IsTag("Jumping")) || (Player1Layer0.IsTag("JumpingAttack")))
         {
             if (other.gameObject.CompareTag("MidLight"))
             {
@@ -170,7 +170,7 @@ public class P1MovementFlora : MonoBehaviour
             }
         }
 
-        if (Player1Layer0.IsTag("Crouching"))
+        if ((Player1Layer0.IsTag("Crouching")) || (Player1Layer0.IsTag("CrouchingAttack")))
         {
             if (other.gameObject.CompareTag("MidLight"))
             {
