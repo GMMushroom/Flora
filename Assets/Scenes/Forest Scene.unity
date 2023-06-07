@@ -205,7 +205,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &463022943
 GameObject:
@@ -754,7 +754,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1314330712}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e7ee6176e5a947c9a72cc55e11df547, type: 3}
   m_Name: 
@@ -965,7 +965,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1605582422
 BoxCollider2D:
@@ -1527,7 +1527,7 @@ GameObject:
   - component: {fileID: 4964395328783664847}
   - component: {fileID: 4964395328783664846}
   - component: {fileID: 4964395328783664845}
-  - component: {fileID: 4964395328783664844}
+  - component: {fileID: 4964395328783664848}
   m_Layer: 7
   m_Name: P2
   m_TagString: Player2
@@ -1559,22 +1559,6 @@ Transform:
   m_Father: {fileID: 4964395329666886798}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4964395328783664844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4964395328783664842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc4824ed877b749c9be1bd838b6d2b8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player2: {fileID: 4964395329666886792}
-  Punch: {fileID: 0}
-  Kick: {fileID: 0}
-  Slash: {fileID: 0}
 --- !u!82 &4964395328783664845
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1681,7 +1665,7 @@ Animator:
   m_GameObject: {fileID: 4964395328783664842}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6bfd61a9b8ff74cf382364e4a3734ff1, type: 2}
+  m_Controller: {fileID: 9100000, guid: aa794bda804e14c079da818b0a90b375, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1743,6 +1727,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4964395328783664848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4964395328783664842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20466fc7bf36e4c2aa82e467f28b2935, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player2: {fileID: 4964395329666886792}
+  Punch: {fileID: 0}
+  Kick: {fileID: 0}
+  Slash: {fileID: 0}
 --- !u!1 &4964395329256705505
 GameObject:
   m_ObjectHideFlags: 0
@@ -11603,40 +11603,14 @@ GameObject:
   - component: {fileID: 4964395329666886796}
   - component: {fileID: 4964395329666886795}
   - component: {fileID: 4964395329666886794}
-  - component: {fileID: 4964395329666886793}
+  - component: {fileID: 4964395329666886799}
   m_Layer: 7
   m_Name: AI Ray
   m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &4964395329666886793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4964395329666886792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 229be7da6f5ae442d9179d10115672e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player1: {fileID: 4964395328783664842}
-  Player2: {fileID: 0}
-  LightHit: {fileID: 0}
-  HeavyHit: {fileID: 0}
-  CapsuleCollider1: {fileID: 4964395329666886795}
-  CapsuleCollider2: {fileID: 4964395329666886794}
-  rb: {fileID: 4964395329666886796}
-  groundCheck: {fileID: 4964395329256705506}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  KnockBackForceLight: 1
-  KnockBackForceUp: 1
-  KnockBackForceHeavy: 2
+  m_IsActive: 1
 --- !u!70 &4964395329666886794
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -11758,6 +11732,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4964395329666886799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4964395329666886792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d40ab461757d411b80fc9bbb5771f41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player1: {fileID: 4964395328783664842}
+  Player2: {fileID: 0}
+  LightHit: {fileID: 0}
+  HeavyHit: {fileID: 0}
+  CapsuleCollider1: {fileID: 4964395329666886795}
+  CapsuleCollider2: {fileID: 4964395329666886794}
+  rb: {fileID: 4964395329666886796}
+  groundCheck: {fileID: 4964395329256705506}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  KnockBackForceLight: 1
+  KnockBackForceUp: 1
+  KnockBackForceHeavy: 2
 --- !u!1001 &8032887879185864362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11767,7 +11767,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8434130151256726786, guid: ad1fefaa89839432f9f9e76f290c1cbb, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8434130151256726786, guid: ad1fefaa89839432f9f9e76f290c1cbb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11815,7 +11815,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8434130151256726797, guid: ad1fefaa89839432f9f9e76f290c1cbb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad1fefaa89839432f9f9e76f290c1cbb, type: 3}
@@ -11828,7 +11828,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 696308421570824435, guid: 924a1e3f5ea334e988bbe6cd77030deb, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 696308421570824435, guid: 924a1e3f5ea334e988bbe6cd77030deb, type: 3}
       propertyPath: m_LocalPosition.x

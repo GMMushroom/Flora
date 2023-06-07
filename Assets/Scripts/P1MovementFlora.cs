@@ -6,8 +6,8 @@ using UnityEngine;
 public class P1MovementFlora : MonoBehaviour
 {
     private float horizontal;
-    private float speed = 8f;
-    private float jumpingPower = 30f;
+    public float speed = 8f;
+    public float jumpingPower = 32f;
     private Animator Anim;
     private AnimatorStateInfo Player1Layer0;
     public GameObject Player1;

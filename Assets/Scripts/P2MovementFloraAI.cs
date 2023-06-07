@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 
-public class P2MovementFlora : MonoBehaviour
+public class P2MovementFloraAI : MonoBehaviour
 {
-    private float horizontal;
     public float speed = 8f;
     public float jumpingPower = 32f;
     private Animator Anim;
@@ -20,6 +19,11 @@ public class P2MovementFlora : MonoBehaviour
     public AudioClip HeavyHit;
     public Collider2D CapsuleCollider1;
     public Collider2D CapsuleCollider2;
+
+    private float OppDistance;
+    public float AttackDistance = 30f;
+    private bool MoveAI = true;
+    public static bool AttackState = false;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -40,18 +44,20 @@ public class P2MovementFlora : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        OppDistance = Vector3.Distance(Player2.transform.position, Player1.transform.position);
+
         //Check if K.O'd or if Won
         if (SaveScript.Player2Health <= 0)
         {
             Anim.SetTrigger("KO");
-            Player1.GetComponent<P2ActionFlora>().enabled = false;
+            Player1.GetComponent<P2ActionFloraAI>().enabled = false;
             StartCoroutine(KO());
         }
         if (SaveScript.Player1Health <= 0)
         {
             Anim.SetTrigger("Win");
-            Player1.GetComponent<P2ActionFlora>().enabled = false;
-            this.GetComponent<P2MovementFlora>().enabled = false;
+            Player1.GetComponent<P2ActionFloraAI>().enabled = false;
+            this.GetComponent<P2MovementFloraAI>().enabled = false;
         }
 
         //Listens to Animator
@@ -64,15 +70,49 @@ public class P2MovementFlora : MonoBehaviour
         if (P2Position.x > Player1.transform.position.x)
         {
             StartCoroutine(FaceRight());
+
+            if (Player1Layer0.IsTag("Standing"))
+            {
+                if (OppDistance > AttackDistance)
+                {
+                    if (MoveAI == true)
+                    {
+                        transform.Translate(speed * Time.deltaTime, 0, 0);
+                    }
+                }
+                if (OppDistance < AttackDistance)
+                {
+                    if (MoveAI == true)
+                    {
+                        MoveAI = false;
+                    }
+                }
+            }
         }
         if (P2Position.x < Player1.transform.position.x)
         {
             StartCoroutine(FaceLeft());
+
+            if (Player1Layer0.IsTag("Standing"))
+            {
+                if (OppDistance > AttackDistance)
+                {
+                    if (MoveAI == true)
+                    {
+                        transform.Translate(-speed * Time.deltaTime, 0, 0);
+                    }
+                }
+                if (OppDistance < AttackDistance)
+                {
+                    if (MoveAI == true)
+                    {
+                        MoveAI = false;
+                    }
+                }
+            }
         }
 
         //Getting Horizontal Axis & Jumping
-        horizontal = Input.GetAxisRaw("HorizontalP2");
-
         if (Player1Layer0.IsTag("Standing"))
         if (Input.GetButtonDown("JumpP2") && IsGrounded())
         {
@@ -94,13 +134,12 @@ public class P2MovementFlora : MonoBehaviour
             rb.isKinematic = false;
         }
     }
-
+/*
     //Walking Forwards, Backward and Crouching Animations
     private void FixedUpdate()
     {
         if (Player1Layer0.IsTag("Standing"))
         {
-            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
             if (Input.GetAxis("HorizontalP2") > 0)
             {
                 Anim.SetBool("Forward", true);
@@ -128,7 +167,7 @@ public class P2MovementFlora : MonoBehaviour
             CapsuleCollider1.enabled = true;
         }
     }
-
+*/
     //Ground Check
     private bool IsGrounded()
     {
@@ -232,6 +271,6 @@ public class P2MovementFlora : MonoBehaviour
     IEnumerator KO()
     {
         yield return new WaitForSeconds(0.1f);
-        this.GetComponent<P2MovementFlora>().enabled = false;
+        this.GetComponent<P2MovementFloraAI>().enabled = false;
     }
 }
