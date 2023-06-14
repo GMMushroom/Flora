@@ -6,7 +6,7 @@ using UnityEngine;
 public class P2MovementFloraAI : MonoBehaviour
 {
     public float speed = 8f;
-    public float jumpingPower = 32f;
+    public float jumpingPower = 15f;
     private Animator Anim;
     private AnimatorStateInfo Player1Layer0;
     public GameObject Player1;
@@ -73,10 +73,14 @@ public class P2MovementFloraAI : MonoBehaviour
 
             if (Player1Layer0.IsTag("Standing"))
             {
+                Anim.SetBool("CanAttack", false);
                 if (OppDistance > AttackDistance)
                 {
                     if (MoveAI == true)
                     {
+                        Anim.SetBool("Forward", true);
+                        Anim.SetBool("Backward", false);
+                        AttackState = false;
                         transform.Translate(speed * Time.deltaTime, 0, 0);
                     }
                 }
@@ -85,6 +89,10 @@ public class P2MovementFloraAI : MonoBehaviour
                     if (MoveAI == true)
                     {
                         MoveAI = false;
+                        Anim.SetBool("Forward", false);
+                        Anim.SetBool("Backward", false);
+                        Anim.SetBool("CanAttack", true);
+                        StartCoroutine(StopMoving());
                     }
                 }
             }
@@ -95,10 +103,14 @@ public class P2MovementFloraAI : MonoBehaviour
 
             if (Player1Layer0.IsTag("Standing"))
             {
+                Anim.SetBool("CanAttack", false);
                 if (OppDistance > AttackDistance)
                 {
                     if (MoveAI == true)
                     {
+                        Anim.SetBool("Backward", true);
+                        Anim.SetBool("Forward", false);
+                        AttackState = false;
                         transform.Translate(-speed * Time.deltaTime, 0, 0);
                     }
                 }
@@ -107,6 +119,10 @@ public class P2MovementFloraAI : MonoBehaviour
                     if (MoveAI == true)
                     {
                         MoveAI = false;
+                        Anim.SetBool("Forward", false);
+                        Anim.SetBool("Backward", false);
+                        Anim.SetBool("CanAttack", true);
+                        StartCoroutine(StopMoving());
                     }
                 }
             }
@@ -272,5 +288,11 @@ public class P2MovementFloraAI : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         this.GetComponent<P2MovementFloraAI>().enabled = false;
+    }
+
+    IEnumerator StopMoving()
+    {
+        yield return new WaitForSeconds(0.6f);
+        MoveAI = true;
     }
 }

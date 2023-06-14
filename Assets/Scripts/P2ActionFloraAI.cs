@@ -12,6 +12,8 @@ public class P2ActionFloraAI : MonoBehaviour
     public AudioClip Kick;
     public AudioClip Slash;
 
+    private int AttackNumber = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,16 +31,16 @@ public class P2ActionFloraAI : MonoBehaviour
         //Standing Attacks & Standing Block
         if (Player1Layer0.IsTag("Standing"))
         {
-            if (Input.GetButtonDown("Fire1P2"))
+            if (AttackNumber == 1)
             {
                 Anim.SetTrigger("A");
             }
 
-            if (Input.GetButtonDown("Fire2P2"))
+            if (AttackNumber == 2)
             {
                 Anim.SetTrigger("B");
             }
-            if (Input.GetButtonDown("Fire3P2"))
+            if (AttackNumber == 3)
             {
                 Anim.SetTrigger("C");
             }
@@ -51,7 +53,7 @@ public class P2ActionFloraAI : MonoBehaviour
         //Crouching Attacks & Crouching Block
         if (Player1Layer0.IsTag("Crouching"))
         {
-            if (Input.GetButtonDown("Fire1P2"))
+            if (AttackNumber == 1)
             {
                 Anim.SetTrigger("A");
             }
@@ -77,6 +79,14 @@ public class P2ActionFloraAI : MonoBehaviour
             {
                 Anim.SetBool("Blocking", false);
             }
+        }
+    }
+
+    public void AttackRate()
+    {
+        if(P2MovementFloraAI.AttackState == true)
+        {
+            AttackNumber = Random.Range(1, 5);
         }
     }
 

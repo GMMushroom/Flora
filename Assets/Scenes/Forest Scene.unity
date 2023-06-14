@@ -1665,7 +1665,7 @@ Animator:
   m_GameObject: {fileID: 4964395328783664842}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: aa794bda804e14c079da818b0a90b375, type: 2}
+  m_Controller: {fileID: 9100000, guid: c713a140a0a58440087809e9be8fa791, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -11744,12 +11744,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d40ab461757d411b80fc9bbb5771f41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 8
+  jumpingPower: 32
   Player1: {fileID: 4964395328783664842}
   Player2: {fileID: 0}
   LightHit: {fileID: 0}
   HeavyHit: {fileID: 0}
   CapsuleCollider1: {fileID: 4964395329666886795}
   CapsuleCollider2: {fileID: 4964395329666886794}
+  AttackDistance: 3
   rb: {fileID: 4964395329666886796}
   groundCheck: {fileID: 4964395329256705506}
   groundLayer:

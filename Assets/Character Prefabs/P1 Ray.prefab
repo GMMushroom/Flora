@@ -5234,6 +5234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98647d82090ad410190bbadd2add7d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 8
+  jumpingPower: 30
   Player1: {fileID: 8434130151845983553}
   Player2: {fileID: 0}
   LightHit: {fileID: 0}

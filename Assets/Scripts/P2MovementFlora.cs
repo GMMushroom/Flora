@@ -7,7 +7,7 @@ public class P2MovementFlora : MonoBehaviour
 {
     private float horizontal;
     public float speed = 8f;
-    public float jumpingPower = 32f;
+    public float jumpingPower = 15f;
     private Animator Anim;
     private AnimatorStateInfo Player1Layer0;
     public GameObject Player1;
