@@ -5249,7 +5249,7 @@ MonoBehaviour:
     m_Bits: 8
   KnockBackForceLight: 1
   KnockBackForceUp: 1
-  KnockBackForceHeavy: 2
+  KnockBackForceHeavy: 4
 --- !u!1 &8434130151326584145
 GameObject:
   m_ObjectHideFlags: 0

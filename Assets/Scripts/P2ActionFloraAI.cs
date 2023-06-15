@@ -13,6 +13,8 @@ public class P2ActionFloraAI : MonoBehaviour
     public AudioClip Slash;
 
     private int AttackNumber = 1;
+    private bool Attacking = true;
+    public float AttackRate = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -31,22 +33,26 @@ public class P2ActionFloraAI : MonoBehaviour
         //Standing Attacks & Standing Block
         if (Player1Layer0.IsTag("Standing"))
         {
-            if (AttackNumber == 1)
+            if (Attacking == true)
             {
-                Anim.SetTrigger("A");
-            }
+                Attacking = false;
+                if (AttackNumber == 1)
+                {
+                    Anim.SetTrigger("A");
+                }
 
-            if (AttackNumber == 2)
-            {
-                Anim.SetTrigger("B");
-            }
-            if (AttackNumber == 3)
-            {
-                Anim.SetTrigger("C");
-            }
-            if (Input.GetButtonDown("BlockP2"))
-            {
-                Anim.SetBool("Blocking", true);
+                if (AttackNumber == 2)
+                {
+                    Anim.SetTrigger("B");
+                }
+                if (AttackNumber == 3)
+                {
+                    Anim.SetTrigger("C");
+                }
+                if (Input.GetButtonDown("BlockP2"))
+                {
+                    Anim.SetBool("Blocking", true);
+                }
             }
         }
 
@@ -82,12 +88,10 @@ public class P2ActionFloraAI : MonoBehaviour
         }
     }
 
-    public void AttackRate()
+    public void RandomAttack()
     {
-        if(P2MovementFloraAI.AttackState == true)
-        {
-            AttackNumber = Random.Range(1, 5);
-        }
+        AttackNumber = Random.Range(1, 4);
+        StartCoroutine(SetAttackRate());
     }
 
     public void PunchSound()
@@ -106,5 +110,11 @@ public class P2ActionFloraAI : MonoBehaviour
     {
         MyPlayer.clip = Slash;
         MyPlayer.Play();
+    }
+
+    IEnumerator SetAttackRate()
+    {
+        yield return new WaitForSeconds(AttackRate);
+        Attacking = true;
     }
 }

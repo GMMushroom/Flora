@@ -167,7 +167,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.083333336
-    functionName: AttackRate
+    functionName: RandomAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

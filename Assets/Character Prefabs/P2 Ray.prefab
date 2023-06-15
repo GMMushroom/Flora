@@ -10530,7 +10530,7 @@ MonoBehaviour:
     m_Bits: 8
   KnockBackForceLight: 1
   KnockBackForceUp: 1
-  KnockBackForceHeavy: 2
+  KnockBackForceHeavy: 4
 --- !u!1 &8973796878963499931
 GameObject:
   m_ObjectHideFlags: 0

@@ -11752,7 +11752,7 @@ MonoBehaviour:
   HeavyHit: {fileID: 0}
   CapsuleCollider1: {fileID: 4964395329666886795}
   CapsuleCollider2: {fileID: 4964395329666886794}
-  AttackDistance: 3
+  AttackDistance: 2
   rb: {fileID: 4964395329666886796}
   groundCheck: {fileID: 4964395329256705506}
   groundLayer:
@@ -11760,7 +11760,7 @@ MonoBehaviour:
     m_Bits: 8
   KnockBackForceLight: 1
   KnockBackForceUp: 1
-  KnockBackForceHeavy: 2
+  KnockBackForceHeavy: 4
 --- !u!1001 &8032887879185864362
 PrefabInstance:
   m_ObjectHideFlags: 0
