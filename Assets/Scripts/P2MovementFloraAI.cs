@@ -24,6 +24,8 @@ public class P2MovementFloraAI : MonoBehaviour
     public float AttackDistance = 30f;
     private bool MoveAI = true;
     public static bool AttackState = false;
+    private int Defend = 0;
+    private bool IsBlocking = false;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -149,6 +151,23 @@ public class P2MovementFloraAI : MonoBehaviour
             CapsuleCollider2.enabled = true;
             rb.isKinematic = false;
         }
+
+        //Defensive Actions
+        if (Defend == 1)
+        {
+            Anim.SetBool("Crouch", true);
+            Defend = 0;
+        }
+        if (Defend == 2)
+        {
+            if (IsBlocking == false)
+            {
+                IsBlocking = true;
+                Anim.SetBool("Crouch", true);
+                Anim.SetBool("Blocking", true);
+                StartCoroutine(StopBlocking());
+            }
+        }
     }
 /*
     //Walking Forwards, Backward and Crouching Animations
@@ -200,6 +219,7 @@ public class P2MovementFloraAI : MonoBehaviour
                 Anim.SetTrigger("LightDamageStanding");
                 Knockback();
                 LightHitSound();
+                Defend = Random.Range(1, 5);
             }
             if (other.gameObject.CompareTag("MidHeavy"))
             {
@@ -216,6 +236,7 @@ public class P2MovementFloraAI : MonoBehaviour
                 Anim.SetTrigger("LightDamageJumping");
                 Knockback();
                 LightHitSound();
+                Defend = Random.Range(1, 5);
             }
             if (other.gameObject.CompareTag("MidHeavy"))
             {
@@ -232,6 +253,7 @@ public class P2MovementFloraAI : MonoBehaviour
                 Anim.SetTrigger("LightDamageCrouching");
                 Knockback();
                 LightHitSound();
+                Defend = Random.Range(1, 5);
             }
             if (other.gameObject.CompareTag("MidHeavy"))
             {
@@ -294,5 +316,14 @@ public class P2MovementFloraAI : MonoBehaviour
     {
         yield return new WaitForSeconds(0.6f);
         MoveAI = true;
+    }
+
+    IEnumerator StopBlocking()
+    {
+        yield return new WaitForSeconds(2.0f);
+        IsBlocking = false;
+        Anim.SetBool("Blocking", false);
+        Anim.SetBool("Crouch", false);
+        Defend = 0;
     }
 }

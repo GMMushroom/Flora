@@ -59,14 +59,8 @@ public class P2ActionFloraAI : MonoBehaviour
         //Crouching Attacks & Crouching Block
         if (Player1Layer0.IsTag("Crouching"))
         {
-            if (AttackNumber == 1)
-            {
-                Anim.SetTrigger("A");
-            }
-            if (Input.GetButtonDown("BlockP2"))
-            {
-                Anim.SetBool("Blocking", true);
-            }
+            Anim.SetTrigger("A");
+            Anim.SetBool("Crouch", false);
         }
 
         //Jumping Attacks & Jumping Block
