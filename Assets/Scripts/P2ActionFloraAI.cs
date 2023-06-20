@@ -26,58 +26,61 @@ public class P2ActionFloraAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Listens to Animator
-        Player1Layer0 = Anim.GetCurrentAnimatorStateInfo(0);
-
-        //Animation for Attacks
-        //Standing Attacks & Standing Block
-        if (Player1Layer0.IsTag("Standing"))
+        if (SaveScript.TimeOut == false)
         {
-            if (Attacking == true)
-            {
-                Attacking = false;
-                if (AttackNumber == 1)
-                {
-                    Anim.SetTrigger("A");
-                }
+            //Listens to Animator
+            Player1Layer0 = Anim.GetCurrentAnimatorStateInfo(0);
 
-                if (AttackNumber == 2)
+            //Animation for Attacks
+            //Standing Attacks & Standing Block
+            if (Player1Layer0.IsTag("Standing"))
+            {
+                if (Attacking == true)
                 {
-                    Anim.SetTrigger("B");
+                    Attacking = false;
+                    if (AttackNumber == 1)
+                    {
+                        Anim.SetTrigger("A");
+                    }
+
+                    if (AttackNumber == 2)
+                    {
+                        Anim.SetTrigger("B");
+                    }
+                    if (AttackNumber == 3)
+                    {
+                        Anim.SetTrigger("C");
+                    }
+                    if (Input.GetButtonDown("BlockP2"))
+                    {
+                        Anim.SetBool("Blocking", true);
+                    }
                 }
-                if (AttackNumber == 3)
-                {
-                    Anim.SetTrigger("C");
-                }
-                if (Input.GetButtonDown("BlockP2"))
+            }
+
+            //Crouching Attacks & Crouching Block
+            if (Player1Layer0.IsTag("Crouching"))
+            {
+                Anim.SetTrigger("A");
+                Anim.SetBool("Crouch", false);
+            }
+
+            //Jumping Attacks & Jumping Block
+            if (Player1Layer0.IsTag("Jumping"))
+            {
+                if (Input.GetButtonDown("Block"))
                 {
                     Anim.SetBool("Blocking", true);
                 }
             }
-        }
 
-        //Crouching Attacks & Crouching Block
-        if (Player1Layer0.IsTag("Crouching"))
-        {
-            Anim.SetTrigger("A");
-            Anim.SetBool("Crouch", false);
-        }
-
-        //Jumping Attacks & Jumping Block
-        if (Player1Layer0.IsTag("Jumping"))
-        {
-            if (Input.GetButtonDown("Block"))
+            //Going out of Blocking
+            if (Player1Layer0.IsTag("Blocking"))
             {
-                Anim.SetBool("Blocking", true);
-            }
-        }
-
-        //Going out of Blocking
-        if (Player1Layer0.IsTag("Blocking"))
-        {
-            if (Input.GetButtonUp("BlockP2"))
-            {
-                Anim.SetBool("Blocking", false);
+                if (Input.GetButtonUp("BlockP2"))
+                {
+                    Anim.SetBool("Blocking", false);
+                }
             }
         }
     }

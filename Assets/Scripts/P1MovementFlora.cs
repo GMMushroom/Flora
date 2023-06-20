@@ -40,92 +40,103 @@ public class P1MovementFlora : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Check if K.O'd or if Won
-        if (SaveScript.Player1Health <= 0)
+        if (SaveScript.TimeOut == true)
         {
-            Anim.SetTrigger("KO");
-            Player1.GetComponent<P1ActionFlora>().enabled = false;
-            StartCoroutine(KO());
+            Anim.SetBool("Forward", false);
+            Anim.SetBool("Backward", false);
         }
-        if (SaveScript.Player2Health <= 0)
+        if (SaveScript.TimeOut == false)
         {
-            Anim.SetTrigger("Win");
-            Player1.GetComponent<P1ActionFlora>().enabled = false;
-            this.GetComponent<P1MovementFlora>().enabled = false;
-        }
+            //Check if K.O'd or if Won
+            if (SaveScript.Player1Health <= 0)
+            {
+                Anim.SetTrigger("KO");
+                Player1.GetComponent<P1ActionFlora>().enabled = false;
+                StartCoroutine(KO());
+            }
+            if (SaveScript.Player2Health <= 0)
+            {
+                Anim.SetTrigger("Win");
+                Player1.GetComponent<P1ActionFlora>().enabled = false;
+                this.GetComponent<P1MovementFlora>().enabled = false;
+            }
 
-        //Listens to Animator
-        Player1Layer0 = Anim.GetCurrentAnimatorStateInfo(0);
+            //Listens to Animator
+            Player1Layer0 = Anim.GetCurrentAnimatorStateInfo(0);
 
-        //Get the opponent's position
-        P2Position = Player2.transform.position;
+            //Get the opponent's position
+            P2Position = Player2.transform.position;
 
-        //Facing Left or Right of the Opponent
-        if (P2Position.x > Player1.transform.position.x)
-        {
-            StartCoroutine(FaceRight());
-        }
-        if (P2Position.x < Player1.transform.position.x)
-        {
-            StartCoroutine(FaceLeft());
-        }
+            //Facing Left or Right of the Opponent
+            if (P2Position.x > Player1.transform.position.x)
+            {
+                StartCoroutine(FaceRight());
+            }
+            if (P2Position.x < Player1.transform.position.x)
+            {
+                StartCoroutine(FaceLeft());
+            }
 
-        //Getting Horizontal Axis & Jumping
-        horizontal = Input.GetAxisRaw("Horizontal");
+            //Getting Horizontal Axis & Jumping
+            horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (Player1Layer0.IsTag("Standing"))
-        if (Input.GetButtonDown("Jump") && IsGrounded())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-            Anim.SetTrigger("Jump");
-        }
+            if (Player1Layer0.IsTag("Standing"))
+                if (Input.GetButtonDown("Jump") && IsGrounded())
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+                    Anim.SetTrigger("Jump");
+                }
 
-        //Disable RigidBody2D and Collider2D when Blocking <-- Finnicky right now.
-        if (Player1Layer0.IsTag("Blocking"))
-        {
-            rb.isKinematic = true;
-            CapsuleCollider1.enabled = false;
-            CapsuleCollider2.enabled = false;
-        }
-        else
-        {
-            CapsuleCollider1.enabled = true;
-            CapsuleCollider2.enabled = true;
-            rb.isKinematic = false;
+            //Disable RigidBody2D and Collider2D when Blocking <-- Finnicky right now.
+            if (Player1Layer0.IsTag("Blocking"))
+            {
+                rb.isKinematic = true;
+                CapsuleCollider1.enabled = false;
+                CapsuleCollider2.enabled = false;
+            }
+            else
+            {
+                CapsuleCollider1.enabled = true;
+                CapsuleCollider2.enabled = true;
+                rb.isKinematic = false;
+            }
         }
     }
 
     //Walking Forwards, Backward and Crouching Animations
     private void FixedUpdate()
     {
-        if (Player1Layer0.IsTag("Standing"))
+        if (SaveScript.TimeOut == false)
         {
-            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-            if (Input.GetAxis("Horizontal") > 0)
+            if (Player1Layer0.IsTag("Standing"))
             {
-                Anim.SetBool("Forward", true);
+                rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+                if (Input.GetAxis("Horizontal") > 0)
+                {
+                    Anim.SetBool("Forward", true);
+                }
+
+                if (Input.GetAxis("Horizontal") < 0)
+                {
+                    Anim.SetBool("Backward", true);
+                }
+                if (Input.GetAxis("Horizontal") == 0)
+                {
+                    Anim.SetBool("Forward", false);
+                    Anim.SetBool("Backward", false);
+                }
             }
 
-            if (Input.GetAxis("Horizontal") < 0)
+            if (Input.GetAxis("Vertical") < 0)
             {
-                Anim.SetBool("Backward", true);
+                Anim.SetBool("Crouch", true);
+                CapsuleCollider1.enabled = false;
             }
-            if (Input.GetAxis("Horizontal") == 0)
+            if (Input.GetAxis("Vertical") == 0)
             {
-                Anim.SetBool("Forward", false);
-                Anim.SetBool("Backward", false);
+                Anim.SetBool("Crouch", false);
+                CapsuleCollider1.enabled = true;
             }
-        }
-
-        if (Input.GetAxis("Vertical") < 0)
-        {
-            Anim.SetBool("Crouch", true);
-            CapsuleCollider1.enabled = false;
-        }
-        if (Input.GetAxis("Vertical") == 0)
-        {
-            Anim.SetBool("Crouch", false);
-            CapsuleCollider1.enabled = true;
         }
     }
 

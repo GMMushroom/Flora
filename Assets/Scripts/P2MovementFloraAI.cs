@@ -46,126 +46,134 @@ public class P2MovementFloraAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        OppDistance = Vector3.Distance(Player2.transform.position, Player1.transform.position);
-
-        //Check if K.O'd or if Won
-        if (SaveScript.Player2Health <= 0)
+        if (SaveScript.TimeOut == true)
         {
-            Anim.SetTrigger("KO");
-            Player1.GetComponent<P2ActionFloraAI>().enabled = false;
-            StartCoroutine(KO());
+            Anim.SetBool("Forward", false);
+            Anim.SetBool("Backward", false);
         }
-        if (SaveScript.Player1Health <= 0)
+        if (SaveScript.TimeOut == false)
         {
-            Anim.SetTrigger("Win");
-            Player1.GetComponent<P2ActionFloraAI>().enabled = false;
-            this.GetComponent<P2MovementFloraAI>().enabled = false;
-        }
+            OppDistance = Vector3.Distance(Player2.transform.position, Player1.transform.position);
 
-        //Listens to Animator
-        Player1Layer0 = Anim.GetCurrentAnimatorStateInfo(0);
-
-        //Get the opponent's position
-        P2Position = Player2.transform.position;
-
-        //Facing Left or Right of the Opponent
-        if (P2Position.x > Player1.transform.position.x)
-        {
-            StartCoroutine(FaceRight());
-
-            if (Player1Layer0.IsTag("Standing"))
+            //Check if K.O'd or if Won
+            if (SaveScript.Player2Health <= 0)
             {
-                Anim.SetBool("CanAttack", false);
-                if (OppDistance > AttackDistance)
+                Anim.SetTrigger("KO");
+                Player1.GetComponent<P2ActionFloraAI>().enabled = false;
+                StartCoroutine(KO());
+            }
+            if (SaveScript.Player1Health <= 0)
+            {
+                Anim.SetTrigger("Win");
+                Player1.GetComponent<P2ActionFloraAI>().enabled = false;
+                this.GetComponent<P2MovementFloraAI>().enabled = false;
+            }
+
+            //Listens to Animator
+            Player1Layer0 = Anim.GetCurrentAnimatorStateInfo(0);
+
+            //Get the opponent's position
+            P2Position = Player2.transform.position;
+
+            //Facing Left or Right of the Opponent
+            if (P2Position.x > Player1.transform.position.x)
+            {
+                StartCoroutine(FaceRight());
+
+                if (Player1Layer0.IsTag("Standing"))
                 {
-                    if (MoveAI == true)
+                    Anim.SetBool("CanAttack", false);
+                    if (OppDistance > AttackDistance)
                     {
-                        Anim.SetBool("Forward", true);
-                        Anim.SetBool("Backward", false);
-                        AttackState = false;
-                        transform.Translate(speed * Time.deltaTime, 0, 0);
+                        if (MoveAI == true)
+                        {
+                            Anim.SetBool("Forward", true);
+                            Anim.SetBool("Backward", false);
+                            AttackState = false;
+                            transform.Translate(speed * Time.deltaTime, 0, 0);
+                        }
                     }
-                }
-                if (OppDistance < AttackDistance)
-                {
-                    if (MoveAI == true)
+                    if (OppDistance < AttackDistance)
                     {
-                        MoveAI = false;
-                        Anim.SetBool("Forward", false);
-                        Anim.SetBool("Backward", false);
-                        Anim.SetBool("CanAttack", true);
-                        StartCoroutine(StopMoving());
+                        if (MoveAI == true)
+                        {
+                            MoveAI = false;
+                            Anim.SetBool("Forward", false);
+                            Anim.SetBool("Backward", false);
+                            Anim.SetBool("CanAttack", true);
+                            StartCoroutine(StopMoving());
+                        }
                     }
                 }
             }
-        }
-        if (P2Position.x < Player1.transform.position.x)
-        {
-            StartCoroutine(FaceLeft());
-
-            if (Player1Layer0.IsTag("Standing"))
+            if (P2Position.x < Player1.transform.position.x)
             {
-                Anim.SetBool("CanAttack", false);
-                if (OppDistance > AttackDistance)
+                StartCoroutine(FaceLeft());
+
+                if (Player1Layer0.IsTag("Standing"))
                 {
-                    if (MoveAI == true)
+                    Anim.SetBool("CanAttack", false);
+                    if (OppDistance > AttackDistance)
                     {
-                        Anim.SetBool("Backward", true);
-                        Anim.SetBool("Forward", false);
-                        AttackState = false;
-                        transform.Translate(-speed * Time.deltaTime, 0, 0);
+                        if (MoveAI == true)
+                        {
+                            Anim.SetBool("Backward", true);
+                            Anim.SetBool("Forward", false);
+                            AttackState = false;
+                            transform.Translate(-speed * Time.deltaTime, 0, 0);
+                        }
                     }
-                }
-                if (OppDistance < AttackDistance)
-                {
-                    if (MoveAI == true)
+                    if (OppDistance < AttackDistance)
                     {
-                        MoveAI = false;
-                        Anim.SetBool("Forward", false);
-                        Anim.SetBool("Backward", false);
-                        Anim.SetBool("CanAttack", true);
-                        StartCoroutine(StopMoving());
+                        if (MoveAI == true)
+                        {
+                            MoveAI = false;
+                            Anim.SetBool("Forward", false);
+                            Anim.SetBool("Backward", false);
+                            Anim.SetBool("CanAttack", true);
+                            StartCoroutine(StopMoving());
+                        }
                     }
                 }
             }
-        }
 
-        //Getting Horizontal Axis & Jumping
-        if (Player1Layer0.IsTag("Standing"))
-        if (Input.GetButtonDown("JumpP2") && IsGrounded())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-            Anim.SetTrigger("Jump");
-        }
+            //Getting Horizontal Axis & Jumping
+            if (Player1Layer0.IsTag("Standing"))
+                if (Input.GetButtonDown("JumpP2") && IsGrounded())
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+                    Anim.SetTrigger("Jump");
+                }
 
-        //Disable RigidBody2D and Collider2D when Blocking
-        if (Player1Layer0.IsTag("Blocking"))
-        {
-            rb.isKinematic = true;
-            CapsuleCollider1.enabled = false;
-            CapsuleCollider2.enabled = false;
-        }
-        else
-        {
-            CapsuleCollider1.enabled = true;
-            CapsuleCollider2.enabled = true;
-            rb.isKinematic = false;
-        }
-
-        //Defensive Actions
-        if (Defend == 1)
-        {
-            Anim.SetBool("Crouch", true);
-            Defend = 0;
-        }
-        if (Defend == 2)
-        {
-            if (IsBlocking == false)
+            //Disable RigidBody2D and Collider2D when Blocking
+            if (Player1Layer0.IsTag("Blocking"))
             {
-                IsBlocking = true;
+                rb.isKinematic = true;
+                CapsuleCollider1.enabled = false;
+                CapsuleCollider2.enabled = false;
+            }
+            else
+            {
+                CapsuleCollider1.enabled = true;
+                CapsuleCollider2.enabled = true;
+                rb.isKinematic = false;
+            }
+
+            //Defensive Actions
+            if (Defend == 1)
+            {
                 Anim.SetBool("Crouch", true);
-                Anim.SetBool("Blocking", true);
-                StartCoroutine(StopBlocking());
+                Defend = 0;
+            }
+            if (Defend == 2)
+            {
+                if (IsBlocking == false)
+                {
+                    IsBlocking = true;
+                    Anim.SetBool("Crouch", true);
+                    Anim.SetBool("Blocking", true);
+                    StartCoroutine(StopBlocking());
+                }
             }
         }
     }

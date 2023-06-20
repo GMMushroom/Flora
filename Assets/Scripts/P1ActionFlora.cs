@@ -22,60 +22,63 @@ public class P1ActionFlora : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Listens to Animator
-        Player1Layer0 = Anim.GetCurrentAnimatorStateInfo(0);
-
-        //Animation for Attacks
-        //Standing Attacks & Standing Block
-        if (Player1Layer0.IsTag("Standing"))
+        if (SaveScript.TimeOut == false)
         {
-            if (Input.GetButtonDown("Fire1"))
+            //Listens to Animator
+            Player1Layer0 = Anim.GetCurrentAnimatorStateInfo(0);
+
+            //Animation for Attacks
+            //Standing Attacks & Standing Block
+            if (Player1Layer0.IsTag("Standing"))
             {
-                Anim.SetTrigger("A");
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    Anim.SetTrigger("A");
+                }
+
+                if (Input.GetButtonDown("Fire2"))
+                {
+                    Anim.SetTrigger("B");
+                }
+                if (Input.GetButtonDown("Fire3"))
+                {
+                    Anim.SetTrigger("C");
+                }
+                if (Input.GetButtonDown("Block"))
+                {
+                    Anim.SetBool("Blocking", true);
+                }
             }
 
-            if (Input.GetButtonDown("Fire2"))
+            //Crouching Attacks & Crouching Block
+            if (Player1Layer0.IsTag("Crouching"))
             {
-                Anim.SetTrigger("B");
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    Anim.SetTrigger("A");
+                }
+                if (Input.GetButtonDown("Block"))
+                {
+                    Anim.SetBool("Blocking", true);
+                }
             }
-            if (Input.GetButtonDown("Fire3"))
-            {
-                Anim.SetTrigger("C");
-            }
-            if (Input.GetButtonDown("Block"))
-            {
-                Anim.SetBool("Blocking", true);
-            }
-        }
 
-        //Crouching Attacks & Crouching Block
-        if (Player1Layer0.IsTag("Crouching"))
-        {
-            if (Input.GetButtonDown("Fire1"))
+            //Jumping Attacks & Jumping Block
+            if (Player1Layer0.IsTag("Jumping"))
             {
-                Anim.SetTrigger("A");
+                if (Input.GetButtonDown("Block"))
+                {
+                    Anim.SetBool("Blocking", true);
+                }
             }
-            if (Input.GetButtonDown("Block"))
-            {
-                Anim.SetBool("Blocking", true);
-            }
-        }
 
-        //Jumping Attacks & Jumping Block
-        if (Player1Layer0.IsTag("Jumping"))
-        {
-            if (Input.GetButtonDown("Block"))
+            //Going out of Blocking
+            if (Player1Layer0.IsTag("Blocking"))
             {
-                Anim.SetBool("Blocking", true);
-            }
-        }
-
-        //Going out of Blocking
-        if (Player1Layer0.IsTag("Blocking"))
-        {
-            if (Input.GetButtonUp("Block"))
-            {
-                Anim.SetBool("Blocking", false);
+                if (Input.GetButtonUp("Block"))
+                {
+                    Anim.SetBool("Blocking", false);
+                }
             }
         }
     }

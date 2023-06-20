@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HealthBarScript : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class HealthBarScript : MonoBehaviour
     public Image Player2Yellow;
     public Image Player1Red;
     public Image Player2Red;
+    public TextMeshProUGUI TimerText;
+    public float LevelTime = 99;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +22,17 @@ public class HealthBarScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (LevelTime > 0)
+        {
+            LevelTime -= 1 * Time.deltaTime;
+        }
+        if (LevelTime <= 0.9)
+        {
+            SaveScript.TimeOut = true;
+        }
+
+        TimerText.text = Mathf.Round(LevelTime).ToString();
+
         Player1Yellow.fillAmount = SaveScript.Player1Health;
         Player2Yellow.fillAmount = SaveScript.Player2Health;
 
