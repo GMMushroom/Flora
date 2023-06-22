@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
 public class P1MovementFlora : MonoBehaviour
@@ -20,6 +21,7 @@ public class P1MovementFlora : MonoBehaviour
     public AudioClip HeavyHit;
     public Collider2D CapsuleCollider1;
     public Collider2D CapsuleCollider2;
+    public GameObject WinCon;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -32,7 +34,11 @@ public class P1MovementFlora : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FacingLeft = false;
+        FacingRight = true;
         Player2 = GameObject.Find("P2");
+        WinCon = GameObject.Find("WinCon");
+        WinCon.gameObject.SetActive(false);
         Anim = GetComponentInChildren<Animator>();
         MyPlayer = GetComponentInChildren<AudioSource>();
     }
@@ -53,12 +59,16 @@ public class P1MovementFlora : MonoBehaviour
                 Anim.SetTrigger("KO");
                 Player1.GetComponent<P1ActionFlora>().enabled = false;
                 StartCoroutine(KO());
+                WinCon.gameObject.SetActive(true);
+                WinCon.GetComponent<WinLose>().enabled = true;
             }
             if (SaveScript.Player2Health <= 0)
             {
                 Anim.SetTrigger("Win");
                 Player1.GetComponent<P1ActionFlora>().enabled = false;
                 this.GetComponent<P1MovementFlora>().enabled = false;
+                WinCon.gameObject.SetActive(true);
+                WinCon.GetComponent<WinLose>().enabled = true;
             }
 
             //Listens to Animator

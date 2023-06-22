@@ -38,6 +38,8 @@ public class P2MovementFloraAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FacingLeft = false;
+        FacingRight = true;
         Player2 = GameObject.Find("P1");
         Anim = GetComponentInChildren<Animator>();
         MyPlayer = GetComponentInChildren<AudioSource>();
