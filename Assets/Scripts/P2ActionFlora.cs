@@ -11,6 +11,8 @@ public class P2ActionFlora : MonoBehaviour
     public AudioClip Punch;
     public AudioClip Kick;
     public AudioClip Slash;
+    public Transform ShootingPoint;
+    public GameObject FireballPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +45,10 @@ public class P2ActionFlora : MonoBehaviour
                 if (Input.GetButtonDown("Fire3P2"))
                 {
                     Anim.SetTrigger("C");
+                }
+                if (Input.GetButtonDown("SpecialP2"))
+                {
+                    Anim.SetTrigger("S");
                 }
                 if (Input.GetButtonDown("BlockP2"))
                 {
@@ -81,6 +87,11 @@ public class P2ActionFlora : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void Fireball()
+    {
+        Instantiate(FireballPrefab, ShootingPoint.position, ShootingPoint.rotation);
     }
 
     public void PunchSound()

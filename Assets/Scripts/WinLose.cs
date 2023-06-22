@@ -34,7 +34,7 @@ public class WinLose : MonoBehaviour
 
     IEnumerator P1WinSet()
     {
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.1f);
         if (SaveScript.Player1Health > SaveScript.Player2Health)
         {
             if (SaveScript.Player1Mode == true)

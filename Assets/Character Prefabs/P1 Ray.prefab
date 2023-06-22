@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4447351145207559750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8488520851932790006}
+  m_Layer: 0
+  m_Name: ShootingPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8488520851932790006
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4447351145207559750}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.785, y: 0.179, z: 0.08645514}
+  m_LocalScale: {x: 0.26285353, y: 0.26285353, z: 0.26285353}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8434130151845983556}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8434130150338686568
 GameObject:
   m_ObjectHideFlags: 0
@@ -5242,6 +5273,7 @@ MonoBehaviour:
   HeavyHit: {fileID: 0}
   CapsuleCollider1: {fileID: 8434130151256726790}
   CapsuleCollider2: {fileID: 8434130151256726785}
+  WinCon: {fileID: 0}
   rb: {fileID: 8434130151256726791}
   groundCheck: {fileID: 8434130151501068570}
   groundLayer:
@@ -10326,6 +10358,7 @@ Transform:
   - {fileID: 8434130150429371596}
   - {fileID: 8434130151597900149}
   - {fileID: 8434130150338686569}
+  - {fileID: 8488520851932790006}
   m_Father: {fileID: 8434130151256726786}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10417,6 +10450,8 @@ MonoBehaviour:
   Punch: {fileID: 0}
   Kick: {fileID: 0}
   Slash: {fileID: 0}
+  ShootingPoint: {fileID: 8488520851932790006}
+  FireballPrefab: {fileID: 220676333758446379, guid: 47e85b4f0b90644b58621a9d3c6cbac5, type: 3}
 --- !u!82 &8434130151845983576
 AudioSource:
   m_ObjectHideFlags: 0

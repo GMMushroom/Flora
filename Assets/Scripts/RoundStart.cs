@@ -43,15 +43,7 @@ public class RoundStart : MonoBehaviour
             MyPlayer.Play();
             yield return new WaitForSeconds(PauseTime);
             Round1Text.gameObject.SetActive(false);
-            yield return new WaitForSeconds(0.1f);
-            FightText.gameObject.SetActive(true);
-            MyPlayer.clip = FightAudio;
-            MyPlayer.Play();
-            yield return new WaitForSeconds(PauseTime);
-            FightText.gameObject.SetActive(false);
-            BGMPlayer.Play();
-            SaveScript.TimeOut = false;
-            this.gameObject.SetActive(false);
+            StartCoroutine(Fight());
         }
         if (SaveScript.RoundCounter == 2)
         {
@@ -83,6 +75,7 @@ public class RoundStart : MonoBehaviour
         MyPlayer.Play();
         yield return new WaitForSeconds(PauseTime);
         FightText.gameObject.SetActive(false);
+        BGMPlayer.Play();
         SaveScript.TimeOut = false;
         this.gameObject.SetActive(false);
     }

@@ -41,15 +41,18 @@ public class P2ActionFloraAI : MonoBehaviour
                     if (AttackNumber == 1)
                     {
                         Anim.SetTrigger("A");
+                        StartCoroutine(SetAttackRate());
                     }
 
                     if (AttackNumber == 2)
                     {
                         Anim.SetTrigger("B");
+                        StartCoroutine(SetAttackRate());
                     }
                     if (AttackNumber == 3)
                     {
                         Anim.SetTrigger("C");
+                        StartCoroutine(SetAttackRate());
                     }
                     if (Input.GetButtonDown("BlockP2"))
                     {
@@ -88,7 +91,7 @@ public class P2ActionFloraAI : MonoBehaviour
     public void RandomAttack()
     {
         AttackNumber = Random.Range(1, 4);
-        StartCoroutine(SetAttackRate());
+        //StartCoroutine(SetAttackRate());
     }
 
     public void PunchSound()
