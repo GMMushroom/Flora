@@ -10,8 +10,8 @@ public class P2MovementFlora : MonoBehaviour
     public float jumpingPower = 15f;
     private Animator Anim;
     private AnimatorStateInfo Player1Layer0;
-    public GameObject Player1;
-    public GameObject Player2;
+    private GameObject Player1;
+    private GameObject Player2;
     private Vector2 P2Position;
     private bool FacingLeft = false;
     private bool FacingRight = true;

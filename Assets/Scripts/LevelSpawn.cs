@@ -4,21 +4,29 @@ using UnityEngine;
 
 public class LevelSpawn : MonoBehaviour
 {
-    public GameObject Player1Character;
-    public GameObject Player2Character;
+    private GameObject Player1;
+    private GameObject Player2;
+    private GameObject Player1Character;
+    private GameObject Player2Character;
     public Transform P1Spawn;
     public Transform P2Spawn;
 
     // Start is called before the first frame update
     void Start()
     {
-        Instantiate(Player1Character, P1Spawn.position, P1Spawn.rotation);
-        Instantiate(Player2Character, P2Spawn.position, P2Spawn.rotation);
+        Player1 = GameObject.Find(SaveScript.P1Select);
+        Player1.gameObject.GetComponent<P1Load>().enabled = true;
+        Player2 = GameObject.Find(SaveScript.P2Select);
+        Player2.gameObject.GetComponent<P2Load>().enabled = true;
+        StartCoroutine(SpawnPlayers());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator SpawnPlayers()
     {
-        
+        yield return new WaitForSeconds(0.1f);
+        Player1Character = SaveScript.P1Load;
+        Player2Character = SaveScript.P2Load;
+        Instantiate(Player1Character, P1Spawn.position, P1Spawn.rotation);
+        Instantiate(Player2Character, P2Spawn.position, P2Spawn.rotation);
     }
 }
