@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LevelSpawn : MonoBehaviour
 {
-    private GameObject Player1;
-    private GameObject Player2;
+    public GameObject Player1;
+    public GameObject Player2;
     private GameObject Player1Character;
     private GameObject Player2Character;
     public Transform P1Spawn;

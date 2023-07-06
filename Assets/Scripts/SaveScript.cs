@@ -21,8 +21,8 @@ public class SaveScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        P1Select = "RayP1UI";
-        P2Select = "RayP2UI";
+        //P1Select = "RayP1";
+        //P2Select = "RayP2";
         Player1Health = 1.0f;
         Player2Health = 1.0f;
     }

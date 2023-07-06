@@ -69,6 +69,6 @@ public class WinLose : MonoBehaviour
             }
         }
         yield return new WaitForSeconds(PauseTime);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }
