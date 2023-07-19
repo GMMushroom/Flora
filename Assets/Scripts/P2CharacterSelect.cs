@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class P2CharacterSelect : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class P2CharacterSelect : MonoBehaviour
     private bool TimeCountdown = false;
     private bool ChangeCharacter = false;
     private AudioSource MyPlayer;
+
+    public int Scene = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -74,6 +77,7 @@ public class P2CharacterSelect : MonoBehaviour
         {
             SaveScript.P2Select = CharacterSelectionP2;
             MyPlayer.Play();
+            SceneManager.LoadScene(Scene);
         }
 
         if (TimeCountdown == true)

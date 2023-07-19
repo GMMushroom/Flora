@@ -29,6 +29,8 @@ public class CPUCharacterSelect : MonoBehaviour
     private bool ChangeCharacter = false;
     private AudioSource MyPlayer;
 
+    public int Scene = 2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -75,7 +77,7 @@ public class CPUCharacterSelect : MonoBehaviour
         {
             SaveScript.P2Select = CharacterSelectionP2;
             MyPlayer.Play();
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(Scene);
         }
 
         if (TimeCountdown == true)

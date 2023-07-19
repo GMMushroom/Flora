@@ -31,6 +31,10 @@ public class P1CharacterSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SaveScript.RoundCounter = 0;
+        SaveScript.P1WinCounter = 0;
+        SaveScript.P2WinCounter = 0;
+        Time.timeScale = 1;
         ChangeCharacter = true;
         Player1Name.gameObject.SetActive(true);
         MyPlayer = GetComponent<AudioSource>();

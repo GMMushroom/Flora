@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelSpawn : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class LevelSpawn : MonoBehaviour
     private GameObject Player2Character;
     public Transform P1Spawn;
     public Transform P2Spawn;
+
+    public int Scene = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -28,5 +31,10 @@ public class LevelSpawn : MonoBehaviour
         Player2Character = SaveScript.P2Load;
         Instantiate(Player1Character, P1Spawn.position, P1Spawn.rotation);
         Instantiate(Player2Character, P2Spawn.position, P2Spawn.rotation);
+    }
+
+    public void BackToCharacterSelect()
+    {
+        SceneManager.LoadScene(Scene);
     }
 }

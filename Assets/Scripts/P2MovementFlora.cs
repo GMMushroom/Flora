@@ -83,11 +83,14 @@ public class P2MovementFlora : MonoBehaviour
             horizontal = Input.GetAxisRaw("HorizontalP2");
 
             if (Player1Layer0.IsTag("Standing"))
+            {
                 if (Input.GetButtonDown("JumpP2") && IsGrounded())
                 {
                     rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
                     Anim.SetTrigger("Jump");
+                    Anim.SetBool("Grounded", false);
                 }
+            }
 
             //Disable RigidBody2D and Collider2D when Blocking
             if (Player1Layer0.IsTag("Blocking"))
@@ -145,6 +148,7 @@ public class P2MovementFlora : MonoBehaviour
     //Ground Check
     private bool IsGrounded()
     {
+        Anim.SetBool("Grounded", true);
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 

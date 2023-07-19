@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6786135498359675427}
   - component: {fileID: 9053445952023497525}
   - component: {fileID: 4329750008394047263}
+  - component: {fileID: 686208859462605446}
   m_Layer: 7
   m_Name: Ray's Fireball P2
   m_TagString: MidLight
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 1c241f0c450914b63bf3f96d9c7e363f, type: 3}
+  m_Sprite: {fileID: 34228795, guid: 54ae36e5523f0425a90462ac74c51147, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -143,3 +144,24 @@ MonoBehaviour:
   EmitFX: 1
   Particles: {fileID: 0}
   ParticleType: P1HeadHit
+  ImpactEffect: {fileID: 3206970672056174342, guid: f73ab8dc6c4cf4949bcb4657a60f8e70, type: 3}
+--- !u!95 &686208859462605446
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220676333758446379}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7eacb98e142af4d2b9d5e895a1a67204, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

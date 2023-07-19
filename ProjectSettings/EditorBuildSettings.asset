@@ -6,9 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 00c5f4501454f4c0ba588cd29305ff5b
+  - enabled: 1
     path: Assets/Scenes/Character Select.unity
     guid: d8efdce27985345d0ae93a321a84de1b
   - enabled: 1
+    path: Assets/Scenes/Stage Select.unity
+    guid: 57bd0f6f7ce46421e8c43cce470fd310
+  - enabled: 1
     path: Assets/Scenes/Forest Scene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Controls Menu.unity
+    guid: b85fbdf5c52834b8ba3f8a32767931ea
+  - enabled: 1
+    path: Assets/Scenes/Options Menu.unity
+    guid: 74fa2bea258e64643ac978049a84c313
   m_configObjects: {}

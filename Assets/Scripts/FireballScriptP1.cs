@@ -13,6 +13,7 @@ public class FireballScriptP1 : MonoBehaviour
     public ParticleSystem Particles;
     public string ParticleType = "P2HeadHit";
     private GameObject ChosenParticles;
+    public GameObject ImpactEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,10 @@ public class FireballScriptP1 : MonoBehaviour
             {
                 SaveScript.Player2Timer += 1.0f;
             }
+
+            Instantiate(ImpactEffect, transform.position, transform.rotation);
+
+            Destroy(gameObject);
         }
     }
 

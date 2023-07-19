@@ -63,6 +63,14 @@ public class P1ActionFlora : MonoBehaviour
                 {
                     Anim.SetTrigger("A");
                 }
+                if (Input.GetButtonDown("Fire2"))
+                {
+                    Anim.SetTrigger("B");
+                }
+                if (Input.GetButtonDown("Fire3"))
+                {
+                    Anim.SetTrigger("C");
+                }
                 if (Input.GetButtonDown("Block"))
                 {
                     Anim.SetBool("Blocking", true);
@@ -72,6 +80,22 @@ public class P1ActionFlora : MonoBehaviour
             //Jumping Attacks & Jumping Block
             if (Player1Layer0.IsTag("Jumping"))
             {
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    Anim.SetTrigger("A");
+                }
+                if (Input.GetButtonDown("Fire2"))
+                {
+                    Anim.SetTrigger("B");
+                }
+                if (Input.GetButtonDown("Fire3"))
+                {
+                    Anim.SetTrigger("C");
+                }
+                if (Input.GetButtonDown("Special"))
+                {
+                    Anim.SetTrigger("S");
+                }
                 if (Input.GetButtonDown("Block"))
                 {
                     Anim.SetBool("Blocking", true);

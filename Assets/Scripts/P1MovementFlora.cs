@@ -87,15 +87,25 @@ public class P1MovementFlora : MonoBehaviour
                 StartCoroutine(FaceLeft());
             }
 
-            //Getting Horizontal Axis & Jumping
+            //Getting Horizontal Axis, Jumping & Landing
             horizontal = Input.GetAxisRaw("Horizontal");
 
             if (Player1Layer0.IsTag("Standing"))
+            {
                 if (Input.GetButtonDown("Jump") && IsGrounded())
                 {
                     rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
                     Anim.SetTrigger("Jump");
+                    Anim.SetBool("Grounded", false);
                 }
+            }
+            if (Player1Layer0.IsTag("Jumping"))
+            {
+                if (IsGrounded())
+                {
+                    Anim.SetBool("Grounded", true);
+                }
+            }
 
             //Disable RigidBody2D and Collider2D when Blocking <-- Finnicky right now.
             if (Player1Layer0.IsTag("Blocking"))
@@ -104,7 +114,7 @@ public class P1MovementFlora : MonoBehaviour
                 CapsuleCollider1.enabled = false;
                 CapsuleCollider2.enabled = false;
             }
-            else
+            else if ((Player1Layer0.IsTag("Standing")) || (Player1Layer0.IsTag("Crouching")))
             {
                 CapsuleCollider1.enabled = true;
                 CapsuleCollider2.enabled = true;

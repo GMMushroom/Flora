@@ -15,6 +15,8 @@ public class WinLose : MonoBehaviour
     public AudioClip P2WinAudio;
     public float PauseTime = 1.5f;
 
+    private int Scene = 3;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,6 +71,6 @@ public class WinLose : MonoBehaviour
             }
         }
         yield return new WaitForSeconds(PauseTime);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(Scene);
     }
 }
