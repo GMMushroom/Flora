@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 686208859462605446}
   m_Layer: 7
   m_Name: Ray's Fireball P2
-  m_TagString: MidLight
+  m_TagString: MidHeavy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

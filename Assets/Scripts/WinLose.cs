@@ -5,11 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class WinLose : MonoBehaviour
 {
+    public GameObject KOText;
     public GameObject WinText;
     public GameObject LoseText;
     public GameObject P1WinText;
     public GameObject P2WinText;
     public AudioSource MyPlayer;
+    public AudioClip KnockoutAudio;
+    public AudioClip YouWinAudio;
     public AudioClip YouLoseAudio;
     public AudioClip P1WinAudio;
     public AudioClip P2WinAudio;
@@ -21,11 +24,12 @@ public class WinLose : MonoBehaviour
     void Start()
     {
         SaveScript.TimeOut = false;
+        KOText.gameObject.SetActive(false);
         WinText.gameObject.SetActive(false);
         LoseText.gameObject.SetActive(false);
         P1WinText.gameObject.SetActive(false);
         P2WinText.gameObject.SetActive(false);
-        StartCoroutine(P1WinSet());
+        StartCoroutine(WinSet());
     }
 
     // Update is called once per frame
@@ -34,14 +38,19 @@ public class WinLose : MonoBehaviour
         
     }
 
-    IEnumerator P1WinSet()
+    IEnumerator WinSet()
     {
         yield return new WaitForSeconds(0.1f);
+        KOText.gameObject.SetActive(true);
+        MyPlayer.clip = KnockoutAudio;
+        MyPlayer.Play();
+        yield return new WaitForSeconds(PauseTime);
         if (SaveScript.Player1Health > SaveScript.Player2Health)
         {
             if (SaveScript.Player1Mode == true)
             {
                 WinText.gameObject.SetActive(true);
+                MyPlayer.clip = YouWinAudio;
                 MyPlayer.Play();
                 SaveScript.P1WinCounter++;
             }

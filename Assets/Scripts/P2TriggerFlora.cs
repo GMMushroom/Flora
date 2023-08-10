@@ -9,7 +9,7 @@ public class P2TriggerFlora : MonoBehaviour
     private AnimatorStateInfo Player1Layer0;
     public float DamageAmt = 0.1f;
     public bool EmitFX = false;
-    public ParticleSystem Particles;
+    private ParticleSystem Particles;
     public string ParticleType = "P1HeadHit";
     private GameObject ChosenParticles;
 

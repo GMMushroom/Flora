@@ -38,11 +38,17 @@ public class StageSelect : MonoBehaviour
 
         if (Input.GetAxis("Horizontal") > 0)
         {
-            if (PauseTime == 1.0f)
+            if (PauseTime == 0.2f)
             {
                 if (CurrentStage < MaxStages)
                 {
                     CurrentStage++;
+                    LevelSelect = true;
+                    TimeCountdown = true;
+                }
+                else if (CurrentStage == MaxStages)
+                {
+                    CurrentStage = 1;
                     LevelSelect = true;
                     TimeCountdown = true;
                 }
@@ -51,7 +57,7 @@ public class StageSelect : MonoBehaviour
 
         if (Input.GetAxis("Horizontal") < 0)
         {
-            if (PauseTime == 1.0f)
+            if (PauseTime == 0.2f)
             {
                 if (CurrentStage >= 1)
                 {
@@ -60,9 +66,9 @@ public class StageSelect : MonoBehaviour
                     TimeCountdown = true;
                 }
 
-                if (CurrentStage == MaxStages)
+                else if (CurrentStage == 1)
                 {
-                    CurrentStage = 1;
+                    CurrentStage = 3;
                     LevelSelect = true;
                     TimeCountdown = true;
                 }

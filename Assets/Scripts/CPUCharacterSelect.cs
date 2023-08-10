@@ -28,6 +28,9 @@ public class CPUCharacterSelect : MonoBehaviour
     private bool TimeCountdown = false;
     private bool ChangeCharacter = false;
     private AudioSource MyPlayer;
+    public AudioClip RayAnnounce;
+    public AudioClip BriannaAnnounce;
+    public AudioClip GilfordAnnounce;
 
     public int Scene = 2;
 
@@ -76,8 +79,24 @@ public class CPUCharacterSelect : MonoBehaviour
         if(Input.GetButtonDown("Fire1"))
         {
             SaveScript.P2Select = CharacterSelectionP2;
-            MyPlayer.Play();
-            SceneManager.LoadScene(Scene);
+            if (IconNumber == 1)
+            {
+                MyPlayer.clip = RayAnnounce;
+                MyPlayer.Play();
+                SceneManager.LoadScene(Scene);
+            }
+            if (IconNumber == 2)
+            {
+                MyPlayer.clip = BriannaAnnounce;
+                MyPlayer.Play();
+                SceneManager.LoadScene(Scene);
+            }
+            if (IconNumber == 3)
+            {
+                MyPlayer.clip = GilfordAnnounce;
+                MyPlayer.Play();
+                SceneManager.LoadScene(Scene);
+            }
         }
 
         if (TimeCountdown == true)

@@ -35,14 +35,36 @@ public class P2MovementFloraAI : MonoBehaviour
     public float KnockBackForceUp = 1.0f;
     public float KnockBackForceHeavy = 2.0f;
 
+    private AudioSource CharacterVoice;
+    public AudioClip EntranceQuote;
+    public AudioClip LightReact;
+    public AudioClip HeavyReact;
+    public AudioClip JumpGrunt;
+    public AudioClip KOQuote1;
+    public AudioClip KOQuote2;
+    public AudioClip KOQuote3;
+    public AudioClip VictoryQuote1;
+    public AudioClip VictoryQuote2;
+    public AudioClip VictoryQuote3;
+    private int HitReaction = 0;
+    private int LoseReaction = 1;
+    private int WinReaction = 1;
+
     // Start is called before the first frame update
     void Start()
     {
+        Player1.transform.Rotate(0, -180, 0);
         FacingLeft = false;
         FacingRight = true;
         Player2 = GameObject.Find("P1");
         Anim = GetComponentInChildren<Animator>();
         MyPlayer = GetComponentInChildren<AudioSource>();
+        CharacterVoice = GetComponentInChildren<AudioSource>();
+        if (SaveScript.RoundCounter == 1)
+        {
+            StartCoroutine(EntranceDialogue());
+        }
+        StartCoroutine(TurnBackAround());
     }
 
     // Update is called once per frame
@@ -61,14 +83,13 @@ public class P2MovementFloraAI : MonoBehaviour
             if (SaveScript.Player2Health <= 0)
             {
                 Anim.SetTrigger("KO");
+                DefeatQuote();
                 Player1.GetComponent<P2ActionFloraAI>().enabled = false;
                 StartCoroutine(KO());
             }
             if (SaveScript.Player1Health <= 0)
             {
-                Anim.SetTrigger("Win");
-                Player1.GetComponent<P2ActionFloraAI>().enabled = false;
-                this.GetComponent<P2MovementFloraAI>().enabled = false;
+                StartCoroutine(VictoryAnimation());
             }
 
             //Listens to Animator
@@ -229,13 +250,14 @@ public class P2MovementFloraAI : MonoBehaviour
                 Anim.SetTrigger("LightDamageStanding");
                 Knockback();
                 LightHitSound();
-                Defend = Random.Range(1, 5);
+                LightHitReaction();
             }
             if (other.gameObject.CompareTag("MidHeavy"))
             {
                 Anim.SetTrigger("HeavyDamageStanding");
                 Knockback();
                 HeavyHitSound();
+                HeavyHitReaction();
             }
         }
 
@@ -246,13 +268,14 @@ public class P2MovementFloraAI : MonoBehaviour
                 Anim.SetTrigger("LightDamageJumping");
                 Knockback();
                 LightHitSound();
-                Defend = Random.Range(1, 5);
+                LightHitReaction();
             }
             if (other.gameObject.CompareTag("MidHeavy"))
             {
                 Anim.SetTrigger("HeavyDamageJumping");
                 Knockback();
                 HeavyHitSound();
+                HeavyHitReaction();
             }
         }
 
@@ -263,13 +286,14 @@ public class P2MovementFloraAI : MonoBehaviour
                 Anim.SetTrigger("LightDamageCrouching");
                 Knockback();
                 LightHitSound();
-                Defend = Random.Range(1, 5);
+                LightHitReaction();
             }
             if (other.gameObject.CompareTag("MidHeavy"))
             {
                 Anim.SetTrigger("HeavyDamageCrouching");
                 Knockback();
                 HeavyHitSound();
+                HeavyHitReaction();
             }
         }
     }
@@ -290,6 +314,76 @@ public class P2MovementFloraAI : MonoBehaviour
     {
         MyPlayer.clip = HeavyHit;
         MyPlayer.Play();
+    }
+
+    public void JumpingGrunt()
+    {
+        CharacterVoice.clip = JumpGrunt;
+        CharacterVoice.Play();
+    }
+
+    public void LightHitReaction()
+    {
+        HitReaction = Random.Range(0, 2);
+
+        if (HitReaction == 1)
+        {
+            CharacterVoice.clip = LightReact;
+            CharacterVoice.Play();
+        }
+    }
+
+    public void HeavyHitReaction()
+    {
+        HitReaction = Random.Range(0, 2);
+
+        if (HitReaction == 1)
+        {
+            CharacterVoice.clip = HeavyReact;
+            CharacterVoice.Play();
+        }
+    }
+
+    public void DefeatQuote()
+    {
+        LoseReaction = Random.Range(1, 4);
+
+        if (LoseReaction == 1)
+        {
+            CharacterVoice.clip = KOQuote1;
+            CharacterVoice.Play();
+        }
+        if (LoseReaction == 2)
+        {
+            CharacterVoice.clip = KOQuote2;
+            CharacterVoice.Play();
+        }
+        if (LoseReaction == 3)
+        {
+            CharacterVoice.clip = KOQuote3;
+            CharacterVoice.Play();
+        }
+    }
+
+    public void VictoryQuote()
+    {
+        WinReaction = Random.Range(1, 4);
+
+        if (WinReaction == 1)
+        {
+            CharacterVoice.clip = VictoryQuote1;
+            CharacterVoice.Play();
+        }
+        if (WinReaction == 2)
+        {
+            CharacterVoice.clip = VictoryQuote2;
+            CharacterVoice.Play();
+        }
+        if (WinReaction == 3)
+        {
+            CharacterVoice.clip = VictoryQuote3;
+            CharacterVoice.Play();
+        }
     }
 
     IEnumerator FaceRight()
@@ -335,5 +429,30 @@ public class P2MovementFloraAI : MonoBehaviour
         Anim.SetBool("Blocking", false);
         Anim.SetBool("Crouch", false);
         Defend = 0;
+    }
+
+    IEnumerator TurnBackAround()
+    {
+        yield return new WaitForSeconds(2.6f);
+        Player1.transform.Rotate(0, 180, 0);
+    }
+
+    //Offsetting Entrance Dialogue
+    IEnumerator EntranceDialogue()
+    {
+        yield return new WaitForSeconds(2.0f);
+        Anim.SetTrigger("Entrance");
+        CharacterVoice.clip = EntranceQuote;
+        CharacterVoice.Play();
+    }
+
+    //Victory Animation
+    IEnumerator VictoryAnimation()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Anim.SetTrigger("Win");
+        VictoryQuote();
+        Player1.GetComponent<P2ActionFloraAI>().enabled = false;
+        this.GetComponent<P2MovementFloraAI>().enabled = false;
     }
 }

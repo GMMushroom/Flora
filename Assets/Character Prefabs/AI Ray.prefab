@@ -183,7 +183,7 @@ AudioSource:
   m_GameObject: {fileID: 6806813614153049618}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 9da6d39149401405abd7f11dd51c26bc, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -5262,7 +5262,6 @@ MonoBehaviour:
   Col: {fileID: 6806813614811592537}
   DamageAmt: 0.03
   EmitFX: 1
-  Particles: {fileID: 0}
   ParticleType: P1BodyHit
 --- !u!1 &6806813614834107442
 GameObject:
@@ -10148,6 +10147,7 @@ GameObject:
   - component: {fileID: 6806813614998539347}
   - component: {fileID: 6806813614998539346}
   - component: {fileID: 6806813614998539351}
+  - component: {fileID: 6928252488899831803}
   m_Layer: 7
   m_Name: AI Ray
   m_TagString: Player2
@@ -10292,8 +10292,8 @@ MonoBehaviour:
   jumpingPower: 32
   Player1: {fileID: 6806813614153049618}
   Player2: {fileID: 0}
-  LightHit: {fileID: 0}
-  HeavyHit: {fileID: 0}
+  LightHit: {fileID: 8300000, guid: 0875e9cc0f2e74fb79cd38f81b1b3880, type: 3}
+  HeavyHit: {fileID: 8300000, guid: c4851e6581fc8449f82cfc848ed17525, type: 3}
   CapsuleCollider1: {fileID: 6806813614998539347}
   CapsuleCollider2: {fileID: 6806813614998539346}
   AttackDistance: 2
@@ -10305,6 +10305,112 @@ MonoBehaviour:
   KnockBackForceLight: 1
   KnockBackForceUp: 1
   KnockBackForceHeavy: 4
+  EntranceQuote: {fileID: 8300000, guid: 5843ae750a1e7459398ec5a8b1d27cb6, type: 3}
+  LightReact: {fileID: 8300000, guid: 730576e4d14c3446598617fc950b81ca, type: 3}
+  HeavyReact: {fileID: 8300000, guid: 3cfd01cebaba34bf4be94f9cdbdcda03, type: 3}
+  JumpGrunt: {fileID: 8300000, guid: 84a5c7a5be2164962bafefc5c2d34053, type: 3}
+  KOQuote1: {fileID: 8300000, guid: 60051ce31b33a46788b481e34702e856, type: 3}
+  KOQuote2: {fileID: 8300000, guid: f69105bcc6417489386b627d9b7bf6ec, type: 3}
+  KOQuote3: {fileID: 8300000, guid: e4fb1b83be3de4a0c86dcb9f4fdd23f1, type: 3}
+  VictoryQuote1: {fileID: 8300000, guid: cf5270805c5a146ea9e2a4ef3185a545, type: 3}
+  VictoryQuote2: {fileID: 8300000, guid: cd8a398ed75f3453eb173ec8c59252c8, type: 3}
+  VictoryQuote3: {fileID: 8300000, guid: 7dd95ed18cced4063bbec967bc358eb4, type: 3}
+--- !u!82 &6928252488899831803
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6806813614998539344}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 7bc2afe4a6af1470286b857e2653ce6d, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6806813615681245267
 GameObject:
   m_ObjectHideFlags: 0
@@ -10437,7 +10543,6 @@ MonoBehaviour:
   Col: {fileID: 6806813615856380455}
   DamageAmt: 0.01
   EmitFX: 1
-  Particles: {fileID: 0}
   ParticleType: P1BodyHit
 --- !u!1 &6806813615886691714
 GameObject:
@@ -10513,7 +10618,6 @@ MonoBehaviour:
   Col: {fileID: 6806813615886691717}
   DamageAmt: 0.05
   EmitFX: 1
-  Particles: {fileID: 0}
   ParticleType: P1HeadHit
 --- !u!1 &6806813616067018567
 GameObject:
@@ -10589,5 +10693,4 @@ MonoBehaviour:
   Col: {fileID: 6806813616067018570}
   DamageAmt: 0.01
   EmitFX: 1
-  Particles: {fileID: 0}
   ParticleType: P1HeadHit

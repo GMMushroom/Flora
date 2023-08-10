@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Stage Select.unity
     guid: 57bd0f6f7ce46421e8c43cce470fd310
   - enabled: 1
-    path: Assets/Scenes/Forest Scene.unity
+    path: Assets/Scenes/Fight Scene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Controls Menu.unity
@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Options Menu.unity
     guid: 74fa2bea258e64643ac978049a84c313
+  - enabled: 1
+    path: Assets/Scenes/Credit Screen.unity
+    guid: 79d0a24cbd31c43038380ff2501a3e1c
   m_configObjects: {}

@@ -39,6 +39,11 @@ public class MenuButtons : MonoBehaviour
         SceneManager.LoadScene(5);
     }
 
+    public void Credits()
+    {
+        SceneManager.LoadScene(6);
+    }
+
     public void Exit()
     {
         Application.Quit();

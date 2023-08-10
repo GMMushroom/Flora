@@ -11,6 +11,13 @@ TagManager:
   - Low
   - High
   - Blocking
+  - BGM
+  - Petals
+  - Cloud
+  - CharacterSelect
+  - DisplayP1
+  - DisplayP2
+  - TitleBGM
   layers:
   - Default
   - TransparentFX

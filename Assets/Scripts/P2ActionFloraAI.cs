@@ -19,6 +19,7 @@ public class P2ActionFloraAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AttackRate = AttackRate * SaveScript.Difficulty;
         Anim = GetComponent<Animator>();
         MyPlayer = GetComponent<AudioSource>();
     }
@@ -54,10 +55,6 @@ public class P2ActionFloraAI : MonoBehaviour
                         Anim.SetTrigger("C");
                         StartCoroutine(SetAttackRate());
                     }
-                    if (Input.GetButtonDown("BlockP2"))
-                    {
-                        Anim.SetBool("Blocking", true);
-                    }
                 }
             }
 
@@ -91,7 +88,7 @@ public class P2ActionFloraAI : MonoBehaviour
     public void RandomAttack()
     {
         AttackNumber = Random.Range(1, 4);
-        //StartCoroutine(SetAttackRate());
+        StartCoroutine(SetAttackRate());
     }
 
     public void PunchSound()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SaveScript : MonoBehaviour
 {
@@ -18,14 +19,23 @@ public class SaveScript : MonoBehaviour
     public static GameObject P1Load;
     public static GameObject P2Load;
     public static int StageNumber = 1;
+    public static float Difficulty = 1.0f;
+
+    public AudioMixer MusicMixer;
+    public AudioMixer SFXMixer;
+    public AudioMixer VoiceMixer;
+    public static float MusicVol = 0;
+    public static float SFXVol = 0;
+    public static float VoiceVol = 2;
 
     // Start is called before the first frame update
     void Start()
     {
-        //P1Select = "RayP1";
-        //P2Select = "RayP2";
         Player1Health = 1.0f;
         Player2Health = 1.0f;
+        MusicMixer.SetFloat("MusicLevel", MusicVol);
+        SFXMixer.SetFloat("SFXLevel", SFXVol);
+        VoiceMixer.SetFloat("VoiceLevel", VoiceVol);
     }
 
     // Update is called once per frame

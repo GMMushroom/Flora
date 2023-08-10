@@ -27,6 +27,9 @@ public class P1CharacterSelect : MonoBehaviour
     private bool TimeCountdown = false;
     private bool ChangeCharacter = false;
     private AudioSource MyPlayer;
+    public AudioClip RayAnnounce;
+    public AudioClip BriannaAnnounce;
+    public AudioClip GilfordAnnounce;
 
     // Start is called before the first frame update
     void Start()
@@ -77,8 +80,24 @@ public class P1CharacterSelect : MonoBehaviour
         if(Input.GetButtonDown("Fire1"))
         {
             SaveScript.P1Select = CharacterSelectionP1;
-            MyPlayer.Play();
-            NextPlayer();
+            if (IconNumber == 1)
+            {
+                MyPlayer.clip = RayAnnounce;
+                MyPlayer.Play();
+                NextPlayer();
+            }
+            if (IconNumber == 2)
+            {
+                MyPlayer.clip = BriannaAnnounce;
+                MyPlayer.Play();
+                NextPlayer();
+            }
+            if (IconNumber == 3)
+            {
+                MyPlayer.clip = GilfordAnnounce;
+                MyPlayer.Play();
+                NextPlayer();
+            }
         }
 
         if (TimeCountdown == true)
